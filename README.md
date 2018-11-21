@@ -8,5 +8,7 @@ JyutPing is a macOS app for looking up and hearing Cantonese pronunciation of Ch
 
 Download the code run with Xcode. You can also download a complied version here: <http://ctka.me/JyutPing.zip>.
 
+If you encounter a warning saying "from an unidentified developer", see this page <https://support.apple.com/kb/ph25088> for help.
+
 ## License
 All code in this project is under the terms and conditions of the [MIT](https://choosealicense.com/licenses/mit/) License.
