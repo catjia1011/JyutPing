@@ -16,5 +16,8 @@ function displayLookupResult(lookupResultArrayFromCocoa) {
             window.webkit.messageHandlers[kSpeakCharacterHandler].postMessage(this.lastChild.innerText);
         };
         document.getElementById('append_content').appendChild(element);
+
+        // break adjacent divs to make `text-align: justify` work as expected
+        document.getElementById('append_content').insertAdjacentHTML('beforeend', " ");
     }
 }
