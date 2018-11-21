@@ -57,6 +57,11 @@ extension MainViewController {
     }
 
 
+    private static let avoidedCharacterSet
+        = CharacterSet(charactersIn: "a"..."z")
+            .union(CharacterSet(charactersIn: "A"..."Z"))
+            .union(CharacterSet(charactersIn: "0"..."9"))
+
     /// call `setWebViewContent(textToLookup:)` instead
     func setWebViewContent(textToLookup: String) {
         var textToLookup = textToLookup
@@ -66,6 +71,13 @@ extension MainViewController {
 
         let array: [[String: String]] = textToLookup.map { (character) in
             let stringChar = String(character)
+
+            // the dict also contains numbers and letters
+            // if char is number or letter, skip searching the dict
+            if let unicodeScalar = character.unicodeScalars.first, type(of: self).avoidedCharacterSet.contains(unicodeScalar) {
+                return WebViewFormatter.singleLookupResult(characterString: stringChar, pronunciation: "")
+            }
+
             let pronunciationDict = jyutDict?[stringChar] as? JyutDictValue
             let sorted = pronunciationDict?.sorted { $0.value > $1.value }.map { $0.key }
 
