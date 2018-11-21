@@ -11,9 +11,16 @@ import AppKit
 
 private var kSpeechSynthesizerKey = ""
 extension MainViewController {
-    private var speechSynthesizer: NSSpeechSynthesizer? {
-        set { objc_setAssociatedObject(self, &kSpeechSynthesizerKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
-        get { return objc_getAssociatedObject(self, &kSpeechSynthesizerKey) as? NSSpeechSynthesizer }
+    private var speechSynthesizer: NSSpeechSynthesizer {
+        return lazyAssociated(&kSpeechSynthesizerKey, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
+            let synthesizer = NSSpeechSynthesizer()
+            synthesizer.delegate = self
+            return synthesizer
+        }
+    }
+
+    var isSpeaking: Bool {
+        return self.speechSynthesizer.isSpeaking
     }
 
     func startSpeaking(text: String) {
@@ -24,19 +31,22 @@ extension MainViewController {
             return
         }
 
-        let synthesizer: NSSpeechSynthesizer
-        if let speechSynthesizer = self.speechSynthesizer {
-            synthesizer = speechSynthesizer
-        } else {
-            synthesizer = NSSpeechSynthesizer()
-            synthesizer.setVoice(cantoneseVoice)
-            self.speechSynthesizer = synthesizer
+        if self.speechSynthesizer.voice() != cantoneseVoice {
+            self.speechSynthesizer.setVoice(cantoneseVoice)
         }
 
-        if synthesizer.isSpeaking {
-            synthesizer.stopSpeaking()
-        } else {
-            synthesizer.startSpeaking(text)
-        }
+        self.speechSynthesizer.startSpeaking(text)
+        self.speakButton.state = .on
+    }
+
+    func stopSpeaking() {
+        self.speechSynthesizer.stopSpeaking()
+    }
+}
+
+
+extension MainViewController: NSSpeechSynthesizerDelegate {
+    func speechSynthesizer(_ sender: NSSpeechSynthesizer, didFinishSpeaking finishedSpeaking: Bool) {
+        self.speakButton.state = .off
     }
 }

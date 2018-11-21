@@ -15,6 +15,8 @@ class MainViewController: NSViewController {
     @IBOutlet weak var webViewWrapper: NSView!
     let webView: WKWebView = NoMenuWebView()
 
+    @IBOutlet weak var speakButton: NSButton!
+    
     @IBOutlet weak var settingSegmentControl: NSSegmentedControl!
     @IBOutlet weak var settingMenu: NSMenu!
 
@@ -61,6 +63,11 @@ class MainViewController: NSViewController {
     }
     
     @IBAction func speakButtonAction(_ sender: NSButton) {
+        if self.isSpeaking {
+            self.stopSpeaking()
+            return
+        }
+
         guard let currrentText = self.currrentDisplayedText, currrentText != "" else { return }
         self.startSpeaking(text: currrentText)
     }

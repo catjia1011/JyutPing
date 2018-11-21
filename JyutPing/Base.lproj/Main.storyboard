@@ -567,12 +567,12 @@
                                                                     </segmentedCell>
                                                                 </segmentedControl>
                                                                 <customView horizontalHuggingPriority="249" horizontalCompressionResistancePriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="biC-eH-3U3">
-                                                                    <rect key="frame" x="43" y="0.0" width="322" height="32"/>
+                                                                    <rect key="frame" x="43" y="0.0" width="346" height="32"/>
                                                                 </customView>
                                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wr9-Bo-ZmN">
-                                                                    <rect key="frame" x="372.5" y="4" width="52" height="23"/>
-                                                                    <buttonCell key="cell" type="roundTextured" title="Speak" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="au6-Ky-djP">
-                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                    <rect key="frame" x="396.5" y="4" width="28" height="23"/>
+                                                                    <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="PlayTemplate" imagePosition="overlaps" alignment="center" alternateImage="StopTemplate" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="au6-Ky-djP">
+                                                                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                                         <font key="font" metaFont="system"/>
                                                                     </buttonCell>
                                                                     <connections>
@@ -639,6 +639,7 @@
                         <outlet property="outlineView" destination="c6a-cy-Pje" id="MuD-CQ-Qpq"/>
                         <outlet property="settingMenu" destination="bL5-Dp-DzM" id="4RN-Zy-x0Z"/>
                         <outlet property="settingSegmentControl" destination="IWY-5h-d5z" id="1BB-uB-OUp"/>
+                        <outlet property="speakButton" destination="Wr9-Bo-ZmN" id="ZJ7-dX-Mk5"/>
                         <outlet property="webViewWrapper" destination="NhZ-SQ-VSG" id="RhP-5D-10J"/>
                     </connections>
                 </viewController>
@@ -666,5 +667,7 @@
     </scenes>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="PlayTemplate" width="18" height="18"/>
+        <image name="StopTemplate" width="18" height="18"/>
     </resources>
 </document>
