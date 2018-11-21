@@ -44,9 +44,9 @@ body {
 }
 
 .character:hover {
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0.14)), color-stop(34%, rgba(234, 234, 234, 0.14)), color-stop(54%, rgba(196, 196, 196, 0.14)), color-stop(100%, rgba(120, 120, 120, 0.14)));
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.75) inset;
+    border: 1px solid rgba(0, 0, 0, 0.20);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0.08)), color-stop(34%, rgba(234, 234, 234, 0.08)), color-stop(54%, rgba(196, 196, 196, 0.08)), color-stop(100%, rgba(120, 120, 120, 0.08)));
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(255, 255, 255, 0.75) inset;
 }
 
 .character div {
