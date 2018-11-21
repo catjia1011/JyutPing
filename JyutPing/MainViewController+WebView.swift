@@ -30,6 +30,7 @@ extension MainViewController {
     }
 
 
+    /// open data `JyutDict.json` is from https://words.hk/faiman/analysis/existingcharpronunciations
     func initializeWebView() {
         // load JyutDict
         if let url = Bundle.main.url(forResource: "JyutDict", withExtension: "json"),
