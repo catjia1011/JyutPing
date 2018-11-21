@@ -10,7 +10,7 @@ Download the code run with Xcode. You can also download a complied version here:
 
 If you encounter a warning saying "from an unidentified developer", see this page <https://support.apple.com/kb/ph25088> for help.
 
-<img width="900" height="225" alt="JyutPing" src="https://raw.githubusercontent.com/catjia1011/JyutPing/master/preview.png"/>
+<img width="850" alt="JyutPing" src="https://raw.githubusercontent.com/catjia1011/JyutPing/master/preview.png"/>
 
 
 ## License
