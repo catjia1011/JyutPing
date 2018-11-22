@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E03031321A728B80025D36D /* LookupResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03031221A728B80025D36D /* LookupResultViewController.swift */; };
 		4E39159021A456420082715A /* OutlineNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E39158F21A456420082715A /* OutlineNode.swift */; };
 		4E39159221A4570E0082715A /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E39159121A4570E0082715A /* constants.swift */; };
-		4E48E9A521A6C70800BADDD7 /* MainViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48E9A421A6C70800BADDD7 /* MainViewController+CollectionView.swift */; };
 		4E48E9A721A6C85700BADDD7 /* CharacterCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48E9A621A6C85700BADDD7 /* CharacterCollectionViewItem.swift */; };
 		4E5AAC8221A167C4006D278F /* JyutDict.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E5AAC8121A167C4006D278F /* JyutDict.json */; };
 		4E5AAC8521A1CAD0006D278F /* HeaderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5AAC8321A1CAD0006D278F /* HeaderCellView.swift */; };
@@ -27,9 +27,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E03031221A728B80025D36D /* LookupResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupResultViewController.swift; sourceTree = "<group>"; };
 		4E39158F21A456420082715A /* OutlineNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineNode.swift; sourceTree = "<group>"; };
 		4E39159121A4570E0082715A /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
-		4E48E9A421A6C70800BADDD7 /* MainViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		4E48E9A621A6C85700BADDD7 /* CharacterCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewItem.swift; sourceTree = "<group>"; };
 		4E5AAC8121A167C4006D278F /* JyutDict.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JyutDict.json; sourceTree = "<group>"; };
 		4E5AAC8321A1CAD0006D278F /* HeaderCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCellView.swift; sourceTree = "<group>"; };
@@ -82,9 +82,9 @@
 				4E75E94A218F2ADF003DA2C2 /* MainWindowController.swift */,
 				4E9DB0D7218F292F003F9091 /* MainViewController.swift */,
 				4EFCBBC221A32C2D00EB3DA1 /* MainViewController+WebView.swift */,
-				4E48E9A421A6C70800BADDD7 /* MainViewController+CollectionView.swift */,
 				4EFCBBC421A3303400EB3DA1 /* MainViewController+OutlineView.swift */,
 				4EFCBBC621A3334800EB3DA1 /* MainViewController+Speech.swift */,
+				4E03031221A728B80025D36D /* LookupResultViewController.swift */,
 				4E48E9A621A6C85700BADDD7 /* CharacterCollectionViewItem.swift */,
 				4E5AAC8321A1CAD0006D278F /* HeaderCellView.swift */,
 				4EF9C61921A51459002B48F0 /* NoClippingView.swift */,
@@ -178,12 +178,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E48E9A521A6C70800BADDD7 /* MainViewController+CollectionView.swift in Sources */,
 				4E9DB0D9218F292F003F9091 /* MainViewController.swift in Sources */,
 				4E48E9A721A6C85700BADDD7 /* CharacterCollectionViewItem.swift in Sources */,
 				4E39159021A456420082715A /* OutlineNode.swift in Sources */,
 				4EFCBBC721A3334800EB3DA1 /* MainViewController+Speech.swift in Sources */,
 				4E39159221A4570E0082715A /* constants.swift in Sources */,
+				4E03031321A728B80025D36D /* LookupResultViewController.swift in Sources */,
 				4E5AAC8521A1CAD0006D278F /* HeaderCellView.swift in Sources */,
 				4EFCBBC521A3303400EB3DA1 /* MainViewController+OutlineView.swift in Sources */,
 				4EFCBBC321A32C2D00EB3DA1 /* MainViewController+WebView.swift in Sources */,

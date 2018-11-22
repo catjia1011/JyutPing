@@ -10,9 +10,10 @@ import Cocoa
 import WebKit
 
 class MainViewController: NSViewController {
+    let lookupResultVC = LookupResultViewController()
 
     @IBOutlet weak var outlineView: NSOutlineView!
-    @IBOutlet weak var collectionView: NSCollectionView!
+    @IBOutlet weak var lookupResultWrapper: NSView!
 
     @IBOutlet weak var speakButton: NSButton!
     
@@ -35,8 +36,12 @@ class MainViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.addChild(lookupResultVC)
+        lookupResultWrapper.addSubview(lookupResultVC.view)
+        lookupResultVC.view.frame = lookupResultWrapper.bounds
+        lookupResultVC.view.autoresizingMask = [.width, .height]
+
         self.initializeOutlineView()
-        self.initializeCollectionView()
 
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNotification(_:)), name: UserDefaults.didChangeNotification, object: nil)
     }

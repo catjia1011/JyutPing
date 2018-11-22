@@ -1,28 +1,31 @@
 //
-//  MainViewController+CollectionView.swift
+//  LookupResultViewController.swift
 //  JyutPing
 //
-//  Created by Cat Jia on 22/11/2018.
+//  Created by Cat Jia on 23/11/2018.
 //  Copyright © 2018 Cat Jia. All rights reserved.
 //
 
-import Foundation
-import AppKit
+import Cocoa
 
-private var kJyutDictKey = ""
-extension MainViewController {
+class LookupResultViewController: NSViewController {
     private typealias JyutDict = NSDictionary // [String: [String: Int]]; NSDictionary is much faster for lookup
     private typealias JyutDictValue = [String: Int]
-    private var jyutDict: JyutDict? {
-        set { objc_setAssociatedObject(self, &kJyutDictKey, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC) }
-        get { return objc_getAssociatedObject(self, &kJyutDictKey) as? JyutDict }
+    private var jyutDict: JyutDict?
+
+    private let flowLayout = NSCollectionViewFlowLayout()
+    private let collectionView = NSCollectionView()
+
+    override func loadView() {
+        collectionView.collectionViewLayout = flowLayout
+
+        let scrollView = NSScrollView()
+        scrollView.documentView = collectionView
+        self.view = scrollView
     }
 
-
-    func initializeCollectionView() {
-        self.collectionView.register(itemType: CharacterCollectionViewItem.self)
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
         // load JyutDict
         // open data `JyutDict.json` is from https://words.hk/faiman/analysis/existingcharpronunciations
@@ -33,11 +36,16 @@ extension MainViewController {
         } else {
             assertionFailure("unexpected when loading JyutDict")
         }
+
+        collectionView.register(itemType: CharacterCollectionViewItem.self)
+        collectionView.dataSource = self
+        collectionView.delegate = self
     }
+    
 }
 
 
-extension MainViewController: NSCollectionViewDataSource, NSCollectionViewDelegate, NSCollectionViewDelegateFlowLayout {
+extension LookupResultViewController: NSCollectionViewDataSource, NSCollectionViewDelegate, NSCollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         return 1
     }
