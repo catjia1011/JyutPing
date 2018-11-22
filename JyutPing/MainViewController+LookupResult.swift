@@ -15,7 +15,7 @@ extension MainViewController {
     private typealias JyutDictValue = [String: Int]
 
     /// open data `JyutDict.json` is from https://words.hk/faiman/analysis/existingcharpronunciations
-    private var jyutDict: JyutDict? {
+    private var jyutDict: JyutDict {
         return lazyAssociated(&kJyutDictKey, .OBJC_ASSOCIATION_COPY_NONATOMIC) {
             if let url = Bundle.main.url(forResource: "JyutDict", withExtension: "json"),
                 let data = try? Data(contentsOf: url),
@@ -23,7 +23,7 @@ extension MainViewController {
                 return dict
             } else {
                 assertionFailure("unexpected when loading JyutDict")
-                return nil
+                return JyutDict()
             }
         }
     }
@@ -48,7 +48,7 @@ extension MainViewController {
                 return SingleLookupResult(character: character, pronunciation: "")
             }
 
-            let pronunciationDict = jyutDict?[String(character)] as? JyutDictValue
+            let pronunciationDict = jyutDict[String(character)] as? JyutDictValue
             let sorted = pronunciationDict?.sorted { $0.value > $1.value }.map { $0.key }
 
             let pronunciation: String?

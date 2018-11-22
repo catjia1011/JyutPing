@@ -49,11 +49,13 @@ extension LookupResultViewController: NSCollectionViewDataSource, NSCollectionVi
     }
 
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return results.count
     }
 
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withType: CharacterCollectionViewItem.self, for: indexPath)
+        let result = results[indexPath.item]
+        item.configure(character: result.character, pronunciation: result.pronunciation)
         return item
     }
 }

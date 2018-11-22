@@ -49,8 +49,8 @@ class CharacterCollectionViewItem: NSCollectionViewItem {
         stackView.frame = view.bounds
     }
 
-    func configure(characterString: String, pronunciation: String) {
-        characterField.stringValue = characterString
+    func configure(character: Character, pronunciation: String) {
+        characterField.stringValue = String(character)
         pronunciationField.stringValue = pronunciation
     }
 
