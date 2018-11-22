@@ -20,7 +20,7 @@ extension MainViewController {
 
 
     func initializeCollectionView() {
-        self.collectionView.register(CharacterCollectionViewItem.self)
+        self.collectionView.register(itemType: CharacterCollectionViewItem.self)
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
 

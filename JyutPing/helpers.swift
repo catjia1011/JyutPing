@@ -21,7 +21,7 @@ extension NSObject {
 }
 
 extension NSCollectionView {
-    func register<T: NSCollectionViewItem>(_ itemType: T.Type) {
+    func register<T: NSCollectionViewItem>(itemType: T.Type) {
         self.register(itemType, forItemWithIdentifier: NSUserInterfaceItemIdentifier(rawValue: itemType.className()))
     }
 
