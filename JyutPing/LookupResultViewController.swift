@@ -8,13 +8,21 @@
 
 import Cocoa
 
+struct SingleLookupResult {
+    let character: Character
+    let pronunciation: String
+}
+
 class LookupResultViewController: NSViewController {
-    private typealias JyutDict = NSDictionary // [String: [String: Int]]; NSDictionary is much faster for lookup
-    private typealias JyutDictValue = [String: Int]
-    private var jyutDict: JyutDict?
 
     private let flowLayout = NSCollectionViewFlowLayout()
     private let collectionView = NSCollectionView()
+
+    var results: [SingleLookupResult] = [] {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
 
     override func loadView() {
         collectionView.collectionViewLayout = flowLayout
@@ -26,16 +34,6 @@ class LookupResultViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // load JyutDict
-        // open data `JyutDict.json` is from https://words.hk/faiman/analysis/existingcharpronunciations
-        if let url = Bundle.main.url(forResource: "JyutDict", withExtension: "json"),
-            let data = try? Data(contentsOf: url),
-            let dict = (try? JSONSerialization.jsonObject(with: data, options: [])) as? JyutDict {
-            self.jyutDict = dict
-        } else {
-            assertionFailure("unexpected when loading JyutDict")
-        }
 
         collectionView.register(itemType: CharacterCollectionViewItem.self)
         collectionView.dataSource = self

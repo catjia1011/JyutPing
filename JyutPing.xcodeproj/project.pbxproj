@@ -21,7 +21,7 @@
 		4EF1D8BF218F182600CF2088 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EF1D8BE218F182600CF2088 /* Assets.xcassets */; };
 		4EF1D8C2218F182600CF2088 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EF1D8C0218F182600CF2088 /* Main.storyboard */; };
 		4EF9C61A21A51459002B48F0 /* NoClippingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF9C61921A51459002B48F0 /* NoClippingView.swift */; };
-		4EFCBBC321A32C2D00EB3DA1 /* MainViewController+WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCBBC221A32C2D00EB3DA1 /* MainViewController+WebView.swift */; };
+		4EFCBBC321A32C2D00EB3DA1 /* MainViewController+LookupResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCBBC221A32C2D00EB3DA1 /* MainViewController+LookupResult.swift */; };
 		4EFCBBC521A3303400EB3DA1 /* MainViewController+OutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCBBC421A3303400EB3DA1 /* MainViewController+OutlineView.swift */; };
 		4EFCBBC721A3334800EB3DA1 /* MainViewController+Speech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCBBC621A3334800EB3DA1 /* MainViewController+Speech.swift */; };
 /* End PBXBuildFile section */
@@ -43,7 +43,7 @@
 		4EF1D8C1218F182600CF2088 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4EF1D8C3218F182600CF2088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EF9C61921A51459002B48F0 /* NoClippingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoClippingView.swift; sourceTree = "<group>"; };
-		4EFCBBC221A32C2D00EB3DA1 /* MainViewController+WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+WebView.swift"; sourceTree = "<group>"; };
+		4EFCBBC221A32C2D00EB3DA1 /* MainViewController+LookupResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+LookupResult.swift"; sourceTree = "<group>"; };
 		4EFCBBC421A3303400EB3DA1 /* MainViewController+OutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+OutlineView.swift"; sourceTree = "<group>"; };
 		4EFCBBC621A3334800EB3DA1 /* MainViewController+Speech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+Speech.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,7 +81,7 @@
 				4EF1D8BA218F182400CF2088 /* AppDelegate.swift */,
 				4E75E94A218F2ADF003DA2C2 /* MainWindowController.swift */,
 				4E9DB0D7218F292F003F9091 /* MainViewController.swift */,
-				4EFCBBC221A32C2D00EB3DA1 /* MainViewController+WebView.swift */,
+				4EFCBBC221A32C2D00EB3DA1 /* MainViewController+LookupResult.swift */,
 				4EFCBBC421A3303400EB3DA1 /* MainViewController+OutlineView.swift */,
 				4EFCBBC621A3334800EB3DA1 /* MainViewController+Speech.swift */,
 				4E03031221A728B80025D36D /* LookupResultViewController.swift */,
@@ -186,7 +186,7 @@
 				4E03031321A728B80025D36D /* LookupResultViewController.swift in Sources */,
 				4E5AAC8521A1CAD0006D278F /* HeaderCellView.swift in Sources */,
 				4EFCBBC521A3303400EB3DA1 /* MainViewController+OutlineView.swift in Sources */,
-				4EFCBBC321A32C2D00EB3DA1 /* MainViewController+WebView.swift in Sources */,
+				4EFCBBC321A32C2D00EB3DA1 /* MainViewController+LookupResult.swift in Sources */,
 				4E75E94C218F2ADF003DA2C2 /* MainWindowController.swift in Sources */,
 				4EF1D8BB218F182400CF2088 /* AppDelegate.swift in Sources */,
 				4EF9C61A21A51459002B48F0 /* NoClippingView.swift in Sources */,

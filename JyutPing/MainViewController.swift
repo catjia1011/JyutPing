@@ -53,12 +53,12 @@ class MainViewController: NSViewController {
     private var currrentDisplayedText: String?
     func displayText(_ text: String) {
         self.currrentDisplayedText = text
-        self.setWebViewContent(textToLookup: text)
+        self.showLookupResult(of: text)
     }
 
     func reloadDisplayedText() {
         guard let text = self.currrentDisplayedText else { return }
-        self.setWebViewContent(textToLookup: text)
+        self.showLookupResult(of: text)
     }
     
     @IBAction func speakButtonAction(_ sender: NSButton) {
