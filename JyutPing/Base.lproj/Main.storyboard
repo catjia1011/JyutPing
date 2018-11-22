@@ -607,18 +607,40 @@
                                                 </constraints>
                                                 <color key="fillColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </box>
-                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="NhZ-SQ-VSG">
+                                            <scrollView wantsLayer="YES" horizontalHuggingPriority="50" verticalHuggingPriority="50" horizontalCompressionResistancePriority="50" verticalCompressionResistancePriority="50" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="infinite" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wsx-fJ-Kfh">
                                                 <rect key="frame" x="0.0" y="0.0" width="440" height="332"/>
-                                            </customView>
+                                                <clipView key="contentView" drawsBackground="NO" id="uSg-qe-TEf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="440" height="332"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <collectionView id="dYK-Y8-xyi">
+                                                            <rect key="frame" x="0.0" y="0.0" width="440" height="158"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="XLJ-10-PzJ">
+                                                                <size key="itemSize" width="50" height="50"/>
+                                                            </collectionViewFlowLayout>
+                                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </collectionView>
+                                                    </subviews>
+                                                </clipView>
+                                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="7fg-nE-C1F">
+                                                    <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Yvs-dn-8JK">
+                                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                            </scrollView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="NhZ-SQ-VSG" secondAttribute="bottom" id="Cff-Wp-W3c"/>
+                                            <constraint firstItem="Wsx-fJ-Kfh" firstAttribute="leading" secondItem="8Ob-Oh-G46" secondAttribute="leading" id="2GG-oM-0Zw"/>
+                                            <constraint firstAttribute="bottom" secondItem="Wsx-fJ-Kfh" secondAttribute="bottom" id="A0I-q2-RoA"/>
                                             <constraint firstItem="yRg-eV-yuh" firstAttribute="leading" secondItem="8Ob-Oh-G46" secondAttribute="leading" id="cND-pi-Grd"/>
-                                            <constraint firstItem="NhZ-SQ-VSG" firstAttribute="top" secondItem="yRg-eV-yuh" secondAttribute="bottom" id="jfW-mO-K9C"/>
+                                            <constraint firstItem="Wsx-fJ-Kfh" firstAttribute="top" secondItem="yRg-eV-yuh" secondAttribute="bottom" id="hdx-z5-1rM"/>
                                             <constraint firstAttribute="trailing" secondItem="yRg-eV-yuh" secondAttribute="trailing" id="kLX-vU-zwT"/>
                                             <constraint firstItem="yRg-eV-yuh" firstAttribute="top" secondItem="8Ob-Oh-G46" secondAttribute="top" id="mQI-j5-waX"/>
-                                            <constraint firstAttribute="trailing" secondItem="NhZ-SQ-VSG" secondAttribute="trailing" id="x5T-mK-hta"/>
-                                            <constraint firstItem="NhZ-SQ-VSG" firstAttribute="leading" secondItem="8Ob-Oh-G46" secondAttribute="leading" id="yAo-Je-kDe"/>
+                                            <constraint firstAttribute="trailing" secondItem="Wsx-fJ-Kfh" secondAttribute="trailing" id="nsh-Zz-3Ft"/>
                                         </constraints>
                                     </customView>
                                 </subviews>
@@ -636,11 +658,11 @@
                         </constraints>
                     </customView>
                     <connections>
+                        <outlet property="collectionView" destination="dYK-Y8-xyi" id="eI4-w8-zte"/>
                         <outlet property="outlineView" destination="c6a-cy-Pje" id="MuD-CQ-Qpq"/>
                         <outlet property="settingMenu" destination="bL5-Dp-DzM" id="4RN-Zy-x0Z"/>
                         <outlet property="settingSegmentControl" destination="IWY-5h-d5z" id="1BB-uB-OUp"/>
                         <outlet property="speakButton" destination="Wr9-Bo-ZmN" id="ZJ7-dX-Mk5"/>
-                        <outlet property="webViewWrapper" destination="NhZ-SQ-VSG" id="RhP-5D-10J"/>
                     </connections>
                 </viewController>
                 <customObject id="Ddz-HP-8sY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

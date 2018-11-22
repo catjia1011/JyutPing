@@ -41,20 +41,20 @@ extension MainViewController {
             assertionFailure("unexpected when loading JyutDict")
         }
 
-        // setup js handler
-        let userContentController = webView.configuration.userContentController
-        let scriptMessageProxy = ScriptMessageProxy(for: self)
-        userContentController.add(scriptMessageProxy, name: WebViewHandler.speakCharacter) // add a proxy, not `self` to avoid retain cycle `self - webView - self`
-
-        // load WebView content
-        if let webviewBundleURL = Bundle.main.url(forResource: "JyutPing", withExtension: "bundle"),
-            let webviewBundle = Bundle(url: webviewBundleURL),
-            let url = webviewBundle.url(forResource: "index", withExtension: "html") {
-            webView.loadFileURL(url, allowingReadAccessTo: webviewBundleURL)
-            webView.navigationDelegate = self
-        } else {
-            assertionFailure("unexpected when loading WebView")
-        }
+//        // setup js handler
+//        let userContentController = webView.configuration.userContentController
+//        let scriptMessageProxy = ScriptMessageProxy(for: self)
+//        userContentController.add(scriptMessageProxy, name: WebViewHandler.speakCharacter) // add a proxy, not `self` to avoid retain cycle `self - webView - self`
+//
+//        // load WebView content
+//        if let webviewBundleURL = Bundle.main.url(forResource: "JyutPing", withExtension: "bundle"),
+//            let webviewBundle = Bundle(url: webviewBundleURL),
+//            let url = webviewBundle.url(forResource: "index", withExtension: "html") {
+//            webView.loadFileURL(url, allowingReadAccessTo: webviewBundleURL)
+//            webView.navigationDelegate = self
+//        } else {
+//            assertionFailure("unexpected when loading WebView")
+//        }
     }
 
 
@@ -98,7 +98,7 @@ extension MainViewController {
                 return
         }
 
-        webView.evaluateJavaScript("displayLookupResult(\(jsonString))", completionHandler: nil)
+//        webView.evaluateJavaScript("displayLookupResult(\(jsonString))", completionHandler: nil)
     }
 }
 

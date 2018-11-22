@@ -12,8 +12,7 @@ import WebKit
 class MainViewController: NSViewController {
 
     @IBOutlet weak var outlineView: NSOutlineView!
-    @IBOutlet weak var webViewWrapper: NSView!
-    let webView: WKWebView = NoMenuWebView()
+    @IBOutlet weak var collectionView: NSCollectionView!
 
     @IBOutlet weak var speakButton: NSButton!
     
@@ -26,11 +25,6 @@ class MainViewController: NSViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        // WKWebView cannot be added using IB when targeting 10.11 and before
-        webViewWrapper.addSubview(webView)
-        webView.frame = webViewWrapper.bounds
-        webView.autoresizingMask = [.width, .height]
-
         // dropmenu for settingSegmentControl
         settingSegmentControl.setMenu(settingMenu, forSegment: 0)
         if #available(OSX 10.13, *) {
@@ -42,7 +36,7 @@ class MainViewController: NSViewController {
         super.viewDidLoad()
 
         self.initializeOutlineView()
-        self.initializeWebView()
+        self.initializeCollectionView()
 
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNotification(_:)), name: UserDefaults.didChangeNotification, object: nil)
     }

@@ -20,6 +20,16 @@ extension NSObject {
     }
 }
 
+extension NSCollectionView {
+    func register<T: NSCollectionViewItem>(_ itemType: T.Type) {
+        self.register(itemType, forItemWithIdentifier: NSUserInterfaceItemIdentifier(rawValue: itemType.className()))
+    }
+
+    func makeItem<T: NSCollectionViewItem>(withType itemType: T.Type, for indexPath: IndexPath) -> T {
+        return self.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: itemType.className()), for: indexPath) as! T
+    }
+}
+
 extension NSSpeechSynthesizer {
     static var cantoneseVoice: VoiceName? {
         return self.availableVoices.first { self.attributes(forVoice: $0)[.localeIdentifier] as? String == "zh_HK" }
