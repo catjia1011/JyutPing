@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E03031321A728B80025D36D /* LookupResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03031221A728B80025D36D /* LookupResultViewController.swift */; };
+		4E03031621A82BE90025D36D /* TrackingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03031421A82BE90025D36D /* TrackingCollectionView.swift */; };
 		4E39159021A456420082715A /* OutlineNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E39158F21A456420082715A /* OutlineNode.swift */; };
 		4E39159221A4570E0082715A /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E39159121A4570E0082715A /* constants.swift */; };
 		4E48E9A721A6C85700BADDD7 /* CharacterCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48E9A621A6C85700BADDD7 /* CharacterCollectionViewItem.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		4E03031221A728B80025D36D /* LookupResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupResultViewController.swift; sourceTree = "<group>"; };
+		4E03031421A82BE90025D36D /* TrackingCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingCollectionView.swift; sourceTree = "<group>"; };
 		4E39158F21A456420082715A /* OutlineNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineNode.swift; sourceTree = "<group>"; };
 		4E39159121A4570E0082715A /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		4E48E9A621A6C85700BADDD7 /* CharacterCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewItem.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				4EFCBBC621A3334800EB3DA1 /* MainViewController+Speech.swift */,
 				4E03031221A728B80025D36D /* LookupResultViewController.swift */,
 				4E48E9A621A6C85700BADDD7 /* CharacterCollectionViewItem.swift */,
+				4E03031421A82BE90025D36D /* TrackingCollectionView.swift */,
 				4E5AAC8321A1CAD0006D278F /* HeaderCellView.swift */,
 				4EF9C61921A51459002B48F0 /* NoClippingView.swift */,
 				4E39158F21A456420082715A /* OutlineNode.swift */,
@@ -179,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E9DB0D9218F292F003F9091 /* MainViewController.swift in Sources */,
+				4E03031621A82BE90025D36D /* TrackingCollectionView.swift in Sources */,
 				4E48E9A721A6C85700BADDD7 /* CharacterCollectionViewItem.swift in Sources */,
 				4E39159021A456420082715A /* OutlineNode.swift in Sources */,
 				4EFCBBC721A3334800EB3DA1 /* MainViewController+Speech.swift in Sources */,

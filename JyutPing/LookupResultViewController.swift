@@ -6,7 +6,8 @@
 //  Copyright © 2018 Cat Jia. All rights reserved.
 //
 
-import Cocoa
+import Foundation
+import AppKit
 
 struct SingleLookupResult {
     let character: Character
@@ -16,7 +17,8 @@ struct SingleLookupResult {
 class LookupResultViewController: NSViewController {
 
     private let flowLayout = NSCollectionViewFlowLayout()
-    private let collectionView = NSCollectionView()
+    private let collectionView = TrackingCollectionView()
+    private let selectionView = NSImageView()
 
     var results: [SingleLookupResult] = [] {
         didSet {
@@ -41,8 +43,14 @@ class LookupResultViewController: NSViewController {
         collectionView.register(itemType: CharacterCollectionViewItem.self)
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.trackingDelegate = self
+
+        selectionView.frame.size = NSSize(width: 50, height: 50)
+        selectionView.wantsLayer = true
+        selectionView.layer?.backgroundColor = NSColor.purple.withAlphaComponent(0.35).cgColor
+        self.view.addSubview(selectionView)
     }
-    
+
 }
 
 
@@ -65,5 +73,21 @@ extension LookupResultViewController: NSCollectionViewDataSource, NSCollectionVi
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
         let result = results[indexPath.item]
         return CharacterCollectionViewItem.defaultSize(for: result.character, pronunciation: result.pronunciation)
+    }
+}
+
+
+extension LookupResultViewController: TrackingCollectionViewTrackingDelegate {
+    func trackingCollectionView(_ collectionView: TrackingCollectionView, mouseEnteredWith event: NSEvent) {
+        selectionView.isHidden = false
+    }
+
+    func trackingCollectionView(_ collectionView: TrackingCollectionView, mouseExitedWith event: NSEvent) {
+        selectionView.isHidden = true
+    }
+
+    func trackingCollectionView(_ collectionView: TrackingCollectionView, mouseMovedWith event: NSEvent) {
+        selectionView.isHidden = false
+        selectionView.frame.origin = self.view.convert(event.locationInWindow, from: nil)
     }
 }
