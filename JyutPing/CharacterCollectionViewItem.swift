@@ -14,14 +14,18 @@ private let kCharacterHeight: CGFloat = 34
 private let kSpacing: CGFloat = 6
 
 class CharacterCollectionViewItem: NSCollectionViewItem {
-    private let pronunciationField = NSTextField()
-    private let characterField = NSTextField()
+    private let pronunciationField = generateLabelField()
+    private let characterField = generateLabelField()
 
+    private static let refTextField = generateLabelField() // NSTextField needs bigger space to show text completely than `NSAttributedString.boundingRect(with:options:)` returns
     private static let refSize = NSSize(width: CGFloat.greatestFiniteMagnitude, height: .greatestFiniteMagnitude)
-    private static let sizingOptions: NSString.DrawingOptions = [.usesFontLeading]
     static func defaultSize(for character: Character, pronunciation: String) -> NSSize {
-        let characterSize = NSAttributedString(string: String(character), attributes: characterAttributes).boundingRect(with: refSize, options: sizingOptions)
-        let pronunciationSize = NSAttributedString(string: pronunciation, attributes: pronunciationAttributes).boundingRect(with: refSize, options: sizingOptions)
+        refTextField.attributedStringValue = NSAttributedString(string: String(character), attributes: characterAttributes)
+        let characterSize = refTextField.sizeThatFits(refSize)
+
+        refTextField.attributedStringValue = NSAttributedString(string: pronunciation, attributes: pronunciationAttributes)
+        let pronunciationSize = refTextField.sizeThatFits(refSize)
+
         let width = max(characterSize.width, pronunciationSize.width)
         return NSSize(width: width, height: (kPronunciationHeight + kSpacing + kCharacterHeight))
     }
@@ -29,16 +33,7 @@ class CharacterCollectionViewItem: NSCollectionViewItem {
     override func loadView() {
         self.view = NSView()
 
-        pronunciationField.isBezeled = false
-        pronunciationField.isEditable = false
-        pronunciationField.drawsBackground = false
-        pronunciationField.usesSingleLineMode = false
         self.view.addSubview(pronunciationField)
-
-        characterField.isBezeled = false
-        characterField.isEditable = false
-        characterField.drawsBackground = false
-        characterField.usesSingleLineMode = false
         self.view.addSubview(characterField)
     }
 
@@ -61,6 +56,15 @@ class CharacterCollectionViewItem: NSCollectionViewItem {
     }
 }
 
+
+private func generateLabelField() -> NSTextField {
+    let field = NSTextField()
+    field.isBezeled = false
+    field.isEditable = false
+    field.drawsBackground = false
+    field.usesSingleLineMode = false
+    return field
+}
 
 private let pronunciationAttributes: [NSAttributedString.Key: Any] = [
     .font: NSFont.systemFont(ofSize: 12),
