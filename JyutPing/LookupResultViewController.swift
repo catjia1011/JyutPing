@@ -49,7 +49,8 @@ class LookupResultViewController: NSViewController {
         selectionView.isHidden = true
         selectionView.wantsLayer = true
         selectionView.layer?.backgroundColor = NSColor.purple.withAlphaComponent(0.35).cgColor
-        self.view.addSubview(selectionView)
+        selectionView.isEnabled = false
+        self.view.addSubview(selectionView, positioned: .below, relativeTo: nil)
 
         scrollView.contentView.postsBoundsChangedNotifications = true
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNotification(_:)), name: NSView.boundsDidChangeNotification, object: scrollView.contentView)
@@ -117,6 +118,10 @@ extension LookupResultViewController: TrackingCollectionViewTrackingDelegate {
     }
 
     func trackingCollectionView(_ collectionView: TrackingCollectionView, mouseMovedWith event: NSEvent) {
+        self.updateSelection(mouseLocation: event.locationInWindow)
+    }
+
+    func trackingCollectionView(_ collectionView: TrackingCollectionView, mouseDraggedWith event: NSEvent) {
         self.updateSelection(mouseLocation: event.locationInWindow)
     }
 }
