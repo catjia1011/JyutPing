@@ -54,10 +54,14 @@ class LookupResultViewController: NSViewController {
 
         selectionView.frame.size = .zero
         selectionView.isHidden = true
-        selectionView.wantsLayer = true
-        selectionView.layer?.backgroundColor = NSColor.purple.withAlphaComponent(0.35).cgColor
-        selectionView.isEnabled = false
         self.view.addSubview(selectionView, positioned: .below, relativeTo: nil)
+
+        let selectionImage = NSImage(named: "CharacterSelection")
+        selectionImage?.resizingMode = .stretch
+        selectionImage?.capInsets = NSEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
+        assert(selectionImage != nil, "selectionImage is not found")
+        selectionView.image = selectionImage
+        selectionView.imageScaling = .scaleAxesIndependently
 
         scrollView.contentView.postsBoundsChangedNotifications = true
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNotification(_:)), name: NSView.boundsDidChangeNotification, object: scrollView.contentView)
