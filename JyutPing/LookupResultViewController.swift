@@ -9,6 +9,8 @@
 import Foundation
 import AppKit
 
+private let kSelectionPadding = (horizontal: CGFloat(2), vertical: CGFloat(2))
+
 struct SingleLookupResult {
     let character: Character
     let pronunciation: String
@@ -34,7 +36,7 @@ class LookupResultViewController: NSViewController {
     }
 
     override func loadView() {
-        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.minimumInteritemSpacing = 4
         flowLayout.minimumLineSpacing = 8
         flowLayout.sectionInset = NSEdgeInsets(top: 8, left: 16, bottom: 32, right: 16)
         collectionView.collectionViewLayout = flowLayout
@@ -86,7 +88,7 @@ class LookupResultViewController: NSViewController {
         let locationInCollectionView = collectionView.convert(mouseLocation, from: nil)
         let frames = collectionView.indexPathsForVisibleItems().compactMap { collectionView.layoutAttributesForItem(at: $0)?.frame }
         if let frame = frames.first(where: { $0.contains(locationInCollectionView) }) {
-            selectionView.frame = self.view.convert(frame, from: collectionView)
+            selectionView.frame = self.view.convert(frame, from: collectionView).insetBy(dx: -kSelectionPadding.horizontal, dy: -kSelectionPadding.vertical)
             selectionView.isHidden = false
         } else {
             selectionView.frame = .zero
