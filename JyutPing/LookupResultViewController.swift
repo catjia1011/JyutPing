@@ -45,7 +45,8 @@ class LookupResultViewController: NSViewController {
         collectionView.delegate = self
         collectionView.trackingDelegate = self
 
-        selectionView.frame.size = NSSize(width: 50, height: 50)
+        selectionView.frame.size = .zero
+        selectionView.isHidden = true
         selectionView.wantsLayer = true
         selectionView.layer?.backgroundColor = NSColor.purple.withAlphaComponent(0.35).cgColor
         self.view.addSubview(selectionView)
@@ -87,7 +88,14 @@ extension LookupResultViewController: TrackingCollectionViewTrackingDelegate {
     }
 
     func trackingCollectionView(_ collectionView: TrackingCollectionView, mouseMovedWith event: NSEvent) {
-        selectionView.isHidden = false
-        selectionView.frame.origin = self.view.convert(event.locationInWindow, from: nil)
+        let locationInCollectionView = collectionView.convert(event.locationInWindow, from: nil)
+        let frames = collectionView.indexPathsForVisibleItems().compactMap { collectionView.layoutAttributesForItem(at: $0)?.frame }
+        if let frame = frames.first(where: { $0.contains(locationInCollectionView) }) {
+            selectionView.frame = self.view.convert(frame, from: collectionView)
+            selectionView.isHidden = false
+        } else {
+            selectionView.frame = .zero
+            selectionView.isHidden = true
+        }
     }
 }
