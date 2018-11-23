@@ -27,6 +27,7 @@ class LookupResultViewController: NSViewController {
     override func loadView() {
         flowLayout.minimumInteritemSpacing = 0
         flowLayout.minimumLineSpacing = 8
+        flowLayout.sectionInset = NSEdgeInsets(top: 8, left: 16, bottom: 32, right: 16)
         collectionView.collectionViewLayout = flowLayout
 
         let scrollView = NSScrollView()
