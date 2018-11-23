@@ -42,6 +42,7 @@ class MainViewController: NSViewController {
         lookupResultVC.view.autoresizingMask = [.width, .height]
 
         self.initializeOutlineView()
+        self.initializeLookupResultVC()
 
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNotification(_:)), name: UserDefaults.didChangeNotification, object: nil)
     }

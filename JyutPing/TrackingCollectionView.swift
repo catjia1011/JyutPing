@@ -13,6 +13,7 @@ protocol TrackingCollectionViewTrackingDelegate: NSObjectProtocol {
     func trackingCollectionView(_ collectionView: TrackingCollectionView, mouseExitedWith event: NSEvent) -> Void
     func trackingCollectionView(_ collectionView: TrackingCollectionView, mouseMovedWith event: NSEvent) -> Void
     func trackingCollectionView(_ collectionView: TrackingCollectionView, mouseDraggedWith event: NSEvent) -> Void
+    func trackingCollectionView(_ collectionView: TrackingCollectionView, mouseUpWith event: NSEvent) -> Void
 }
 
 class TrackingCollectionView: NSCollectionView {
@@ -50,5 +51,10 @@ class TrackingCollectionView: NSCollectionView {
     override func mouseDragged(with event: NSEvent) {
         super.mouseDragged(with: event)
         self.trackingDelegate?.trackingCollectionView(self, mouseDraggedWith: event)
+    }
+
+    override func mouseUp(with event: NSEvent) {
+        super.mouseUp(with: event)
+        self.trackingDelegate?.trackingCollectionView(self, mouseUpWith: event)
     }
 }

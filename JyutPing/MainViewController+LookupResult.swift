@@ -28,6 +28,9 @@ extension MainViewController {
         }
     }
 
+    func initializeLookupResultVC() {
+        lookupResultVC.delegate = self
+    }
 
     private static let avoidedCharacterSet
         = CharacterSet(charactersIn: "a"..."z")
@@ -62,6 +65,13 @@ extension MainViewController {
         }
 
         self.lookupResultVC.results = results
+    }
+}
+
+
+extension MainViewController: LookupResultViewControllerDelegate {
+    func lookupResultViewController(_ viewController: LookupResultViewController, didSelect character: Character) {
+        self.startSpeaking(text: String(character))
     }
 }
 

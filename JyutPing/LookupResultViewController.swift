@@ -14,7 +14,13 @@ struct SingleLookupResult {
     let pronunciation: String
 }
 
+protocol LookupResultViewControllerDelegate: NSObjectProtocol {
+    func lookupResultViewController(_ viewController: LookupResultViewController, didSelect character: Character) -> Void
+}
+
 class LookupResultViewController: NSViewController {
+
+    weak var delegate: LookupResultViewControllerDelegate?
 
     private let scrollView = NSScrollView()
     private let flowLayout = NSCollectionViewFlowLayout()
@@ -44,6 +50,7 @@ class LookupResultViewController: NSViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.trackingDelegate = self
+        collectionView.isSelectable = false
 
         selectionView.frame.size = .zero
         selectionView.isHidden = true
@@ -123,5 +130,12 @@ extension LookupResultViewController: TrackingCollectionViewTrackingDelegate {
 
     func trackingCollectionView(_ collectionView: TrackingCollectionView, mouseDraggedWith event: NSEvent) {
         self.updateSelection(mouseLocation: event.locationInWindow)
+    }
+
+    func trackingCollectionView(_ collectionView: TrackingCollectionView, mouseUpWith event: NSEvent) {
+        let locationInCollectionView = collectionView.convert(event.locationInWindow, from: nil)
+        guard let indexPath = collectionView.indexPathsForVisibleItems().first(where: { collectionView.layoutAttributesForItem(at: $0)?.frame.contains(locationInCollectionView) == true }) else { return }
+        let result = results[indexPath.item]
+        self.delegate?.lookupResultViewController(self, didSelect: result.character)
     }
 }
