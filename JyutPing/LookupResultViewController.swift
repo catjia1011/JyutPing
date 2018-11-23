@@ -69,6 +69,18 @@ class LookupResultViewController: NSViewController {
             break
         }
     }
+
+    private func updateSelection(mouseLocation: NSPoint) {
+        let locationInCollectionView = collectionView.convert(mouseLocation, from: nil)
+        let frames = collectionView.indexPathsForVisibleItems().compactMap { collectionView.layoutAttributesForItem(at: $0)?.frame }
+        if let frame = frames.first(where: { $0.contains(locationInCollectionView) }) {
+            selectionView.frame = self.view.convert(frame, from: collectionView)
+            selectionView.isHidden = false
+        } else {
+            selectionView.frame = .zero
+            selectionView.isHidden = true
+        }
+    }
 }
 
 
@@ -97,6 +109,7 @@ extension LookupResultViewController: NSCollectionViewDataSource, NSCollectionVi
 
 extension LookupResultViewController: TrackingCollectionViewTrackingDelegate {
     func trackingCollectionView(_ collectionView: TrackingCollectionView, mouseEnteredWith event: NSEvent) {
+        // do nothing
     }
 
     func trackingCollectionView(_ collectionView: TrackingCollectionView, mouseExitedWith event: NSEvent) {
@@ -104,14 +117,6 @@ extension LookupResultViewController: TrackingCollectionViewTrackingDelegate {
     }
 
     func trackingCollectionView(_ collectionView: TrackingCollectionView, mouseMovedWith event: NSEvent) {
-        let locationInCollectionView = collectionView.convert(event.locationInWindow, from: nil)
-        let frames = collectionView.indexPathsForVisibleItems().compactMap { collectionView.layoutAttributesForItem(at: $0)?.frame }
-        if let frame = frames.first(where: { $0.contains(locationInCollectionView) }) {
-            selectionView.frame = self.view.convert(frame, from: collectionView)
-            selectionView.isHidden = false
-        } else {
-            selectionView.frame = .zero
-            selectionView.isHidden = true
-        }
+        self.updateSelection(mouseLocation: event.locationInWindow)
     }
 }
