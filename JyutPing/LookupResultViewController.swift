@@ -16,6 +16,7 @@ struct SingleLookupResult {
 
 class LookupResultViewController: NSViewController {
 
+    private let scrollView = NSScrollView()
     private let flowLayout = NSCollectionViewFlowLayout()
     private let collectionView = TrackingCollectionView()
     private let selectionView = NSImageView()
@@ -32,7 +33,6 @@ class LookupResultViewController: NSViewController {
         flowLayout.sectionInset = NSEdgeInsets(top: 8, left: 16, bottom: 32, right: 16)
         collectionView.collectionViewLayout = flowLayout
 
-        let scrollView = NSScrollView()
         scrollView.documentView = collectionView
         self.view = scrollView
     }
@@ -50,8 +50,25 @@ class LookupResultViewController: NSViewController {
         selectionView.wantsLayer = true
         selectionView.layer?.backgroundColor = NSColor.purple.withAlphaComponent(0.35).cgColor
         self.view.addSubview(selectionView)
+
+        scrollView.contentView.postsBoundsChangedNotifications = true
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNotification(_:)), name: NSView.boundsDidChangeNotification, object: scrollView.contentView)
     }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    @objc private func didReceiveNotification(_ notification: Notification) {
+        switch notification.name {
+        case NSView.boundsDidChangeNotification:
+            guard notification.object as? NSView == scrollView.contentView else { return }
+            self.selectionView.isHidden = true
+
+        default:
+            break
+        }
+    }
 }
 
 
@@ -80,7 +97,6 @@ extension LookupResultViewController: NSCollectionViewDataSource, NSCollectionVi
 
 extension LookupResultViewController: TrackingCollectionViewTrackingDelegate {
     func trackingCollectionView(_ collectionView: TrackingCollectionView, mouseEnteredWith event: NSEvent) {
-        selectionView.isHidden = false
     }
 
     func trackingCollectionView(_ collectionView: TrackingCollectionView, mouseExitedWith event: NSEvent) {
