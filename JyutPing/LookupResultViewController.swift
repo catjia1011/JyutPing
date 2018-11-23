@@ -25,6 +25,8 @@ class LookupResultViewController: NSViewController {
     }
 
     override func loadView() {
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.minimumLineSpacing = 8
         collectionView.collectionViewLayout = flowLayout
 
         let scrollView = NSScrollView()
@@ -57,5 +59,10 @@ extension LookupResultViewController: NSCollectionViewDataSource, NSCollectionVi
         let result = results[indexPath.item]
         item.configure(character: result.character, pronunciation: result.pronunciation)
         return item
+    }
+
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
+        let result = results[indexPath.item]
+        return CharacterCollectionViewItem.defaultSize(for: result.character, pronunciation: result.pronunciation)
     }
 }
