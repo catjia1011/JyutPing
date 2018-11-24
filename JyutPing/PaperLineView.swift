@@ -28,7 +28,7 @@ class PaperLineView: NSView {
 
         // clear background
         ctx.setFillColor(NSColor.clear.cgColor)
-        ctx.fill(self.bounds)
+        ctx.fill(dirtyRect)
 
         guard lineInterval >= kMinimalLineInterval else { return }
 
