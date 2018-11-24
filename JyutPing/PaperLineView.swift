@@ -32,14 +32,22 @@ class PaperLineView: NSView {
 
         guard lineInterval >= kMinimalLineInterval else { return }
 
+        // reverse context
+        ctx.scaleBy(x: 1, y: -1)
+        ctx.translateBy(x: 0, y: -self.bounds.height)
+
+        // reverse dirtyRect
+        var dirtyRect = dirtyRect
+        dirtyRect.origin.y = self.bounds.height - dirtyRect.maxY
+
         // draw horizontal lines
         ctx.setStrokeColor(kDashLineColor.cgColor)
         ctx.setLineWidth(1)
         ctx.setLineDash(phase: 0, lengths: [1, 1])
 
-        var y = self.bounds.height - floor((self.bounds.height - dirtyRect.origin.y) / lineInterval) * lineInterval
+        var y = ceil(dirtyRect.origin.y / lineInterval) * lineInterval
         while y <= dirtyRect.maxY {
-            if y < self.bounds.height { // y < self.bounds.height: do not draw the first line
+            if y > 0 { // y > 0: do not draw the first line
                 ctx.addLines(between: [CGPoint(x: 0, y: y), CGPoint(x: self.bounds.width, y: y)])
             }
             y += lineInterval
