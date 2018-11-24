@@ -14,57 +14,77 @@ private let kCharacterHeight: CGFloat = 34
 private let kSpacing: CGFloat = 6
 
 class CharacterCollectionViewItem: NSCollectionViewItem {
-    private let pronunciationField = generateLabelField()
-    private let characterField = generateLabelField()
 
-    private static let refTextField = generateLabelField() // NSTextField needs bigger space to show text completely than `NSAttributedString.boundingRect(with:options:)` returns
     private static let refSize = NSSize(width: CGFloat.greatestFiniteMagnitude, height: .greatestFiniteMagnitude)
     static func defaultSize(for character: Character, pronunciation: String) -> NSSize {
-        refTextField.attributedStringValue = NSAttributedString(string: String(character), attributes: characterAttributes)
-        let characterSize = refTextField.sizeThatFits(refSize)
+        let characterAttrString = NSAttributedString(string: String(character), attributes: characterAttributes)
+        let pronunciationAttrString = NSAttributedString(string: pronunciation, attributes: pronunciationAttributes)
+        return CharacterWithPronunciationView.defaultSize(forCharacter: characterAttrString, pronunciation: pronunciationAttrString)
+    }
 
-        refTextField.attributedStringValue = NSAttributedString(string: pronunciation, attributes: pronunciationAttributes)
-        let pronunciationSize = refTextField.sizeThatFits(refSize)
+    override func loadView() {
+        self.view = CharacterWithPronunciationView()
+    }
+
+    func configure(character: Character, pronunciation: String) {
+        guard let view = self.view as? CharacterWithPronunciationView else { return }
+        view.pronunciationAttrString = NSAttributedString(string: pronunciation, attributes: pronunciationAttributes)
+        view.characterAttrString = NSAttributedString(string: String(character), attributes: characterAttributes)
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        guard let view = self.view as? CharacterWithPronunciationView else { return }
+        view.pronunciationAttrString = nil
+        view.characterAttrString = nil
+    }
+}
+
+
+private let kDrawingOptions: NSString.DrawingOptions = [.usesLineFragmentOrigin]
+private class CharacterWithPronunciationView: NSView {
+
+    private static let refSize = NSSize(width: CGFloat.greatestFiniteMagnitude, height: .greatestFiniteMagnitude)
+    static func defaultSize(forCharacter character: NSAttributedString, pronunciation: NSAttributedString) -> NSSize {
+        let characterSize = character.boundingRect(with: refSize, options: kDrawingOptions)
+        let pronunciationSize = pronunciation.boundingRect(with: refSize, options: kDrawingOptions)
 
         let width = max(characterSize.width, pronunciationSize.width)
         return NSSize(width: width, height: (kPronunciationHeight + kSpacing + kCharacterHeight))
     }
 
-    override func loadView() {
-        self.view = NSView()
-
-        self.view.addSubview(pronunciationField)
-        self.view.addSubview(characterField)
+    var pronunciationAttrString: NSAttributedString? {
+        didSet {
+            self.setNeedsDisplay(self.bounds)
+        }
+    }
+    var characterAttrString: NSAttributedString? {
+        didSet {
+            self.setNeedsDisplay(self.bounds)
+        }
     }
 
-    override func viewDidLayout() {
-        super.viewDidLayout()
+    override func draw(_ dirtyRect: NSRect) {
+        guard let ctx = NSGraphicsContext.current?.cgContext else { return }
 
-        characterField.frame = NSRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height - kPronunciationHeight - kSpacing)
-        pronunciationField.frame = NSRect(x: 0, y: self.view.bounds.height - kPronunciationHeight, width: self.view.bounds.width, height: kPronunciationHeight)
-    }
+        // clear background
+        ctx.setFillColor(NSColor.clear.cgColor)
+        ctx.fill(dirtyRect)
 
-    func configure(character: Character, pronunciation: String) {
-        characterField.attributedStringValue = NSAttributedString(string: String(character), attributes: characterAttributes)
-        pronunciationField.attributedStringValue = NSAttributedString(string: pronunciation, attributes: pronunciationAttributes)
-    }
+        let pronunciationFrame = NSRect(x: 0, y: self.bounds.height - kPronunciationHeight, width: self.bounds.width, height: kPronunciationHeight)
+        let characterFrame = NSRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height - kPronunciationHeight - kSpacing)
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        characterField.stringValue = ""
-        pronunciationField.stringValue = ""
+        if let pronunciationAttrString = pronunciationAttrString, pronunciationFrame.intersects(dirtyRect) {
+            pronunciationAttrString.draw(with: pronunciationFrame, options: kDrawingOptions)
+        }
+
+        if let characterAttrString = characterAttrString, characterFrame.intersects(dirtyRect) {
+            characterAttrString.draw(with: characterFrame, options: kDrawingOptions)
+        }
     }
 }
 
-
-private func generateLabelField() -> NSTextField {
-    let field = NSTextField()
-    field.isBezeled = false
-    field.isEditable = false
-    field.drawsBackground = false
-    field.usesSingleLineMode = false
-    return field
-}
 
 private let pronunciationAttributes: [NSAttributedString.Key: Any] = [
     .font: NSFont.systemFont(ofSize: 12),
