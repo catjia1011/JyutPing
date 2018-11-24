@@ -28,6 +28,7 @@ class LookupResultViewController: NSViewController {
     private let flowLayout = NSCollectionViewFlowLayout()
     private let collectionView = TrackingCollectionView()
     private let selectionView = NSImageView()
+    private let paperLineView = PaperLineView()
 
     var results: [SingleLookupResult] = [] {
         didSet {
@@ -38,7 +39,7 @@ class LookupResultViewController: NSViewController {
     override func loadView() {
         flowLayout.minimumInteritemSpacing = 4
         flowLayout.minimumLineSpacing = 8
-        flowLayout.sectionInset = NSEdgeInsets(top: 8, left: 16, bottom: 32, right: 16)
+        flowLayout.sectionInset = NSEdgeInsets(top: 13, left: 32, bottom: 32, right: 16)
         collectionView.collectionViewLayout = flowLayout
 
         scrollView.documentView = collectionView
@@ -58,6 +59,8 @@ class LookupResultViewController: NSViewController {
         selectionView.isHidden = true
         self.view.addSubview(selectionView, positioned: .below, relativeTo: nil)
 
+        self.scrollView.contentView.addSubview(paperLineView, positioned: .below, relativeTo: nil)
+
         let selectionImage = NSImage(named: "CharacterSelection")
         selectionImage?.resizingMode = .stretch
         selectionImage?.capInsets = NSEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
@@ -73,11 +76,18 @@ class LookupResultViewController: NSViewController {
         NotificationCenter.default.removeObserver(self)
     }
 
+    override func viewDidLayout() {
+        super.viewDidLayout()
+        self.paperLineView.frame = self.collectionView.frame
+    }
+
     @objc private func didReceiveNotification(_ notification: Notification) {
         switch notification.name {
         case NSView.boundsDidChangeNotification:
             guard notification.object as? NSView == scrollView.contentView else { return }
+            // did scroll
             self.selectionView.isHidden = true
+            self.paperLineView.frame = self.collectionView.frame
 
         default:
             break
