@@ -71,6 +71,7 @@ private class CharacterWithPronunciationView: NSView {
     func setup() {
         self.wantsLayer = true
         self.layerContentsRedrawPolicy = .duringViewResize
+        self.canDrawConcurrently = true
     }
 
     var pronunciationAttrString: NSAttributedString? {
