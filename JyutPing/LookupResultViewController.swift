@@ -27,7 +27,7 @@ class LookupResultViewController: NSViewController {
     private let scrollView = NSScrollView()
     private let flowLayout = NSCollectionViewFlowLayout()
     private let collectionView = TrackingCollectionView()
-    private let selectionView = NSImageView()
+    private let selectionView = TrackingSelectionView()
     private let paperLineView = PaperLineView()
     private let doubleLineView = DoubleLineView()
 
@@ -60,14 +60,7 @@ class LookupResultViewController: NSViewController {
         // selection view
         selectionView.frame.size = .zero
         selectionView.isHidden = true
-        self.view.addSubview(selectionView, positioned: .below, relativeTo: nil)
-
-        let selectionImage = NSImage(named: "CharacterSelection")
-        selectionImage?.resizingMode = .stretch
-        selectionImage?.capInsets = NSEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
-        assert(selectionImage != nil, "selectionImage is not found")
-        selectionView.image = selectionImage
-        selectionView.imageScaling = .scaleAxesIndependently
+        self.view.addSubview(selectionView)
 
         // paper line & double line
         paperLineView.lineInterval = (CharacterCollectionViewItem.defaultHeight + flowLayout.minimumLineSpacing) / 2
