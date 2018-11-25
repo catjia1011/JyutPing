@@ -9,7 +9,7 @@
 import Cocoa
 
 private let kMinimalLineInterval = 10 as CGFloat
-private let kDashLineColor = NSColor.black.withAlphaComponent(0.24)
+private let kDashLineColor = NSColor.gridColor
 
 class PaperLineView: NSView {
     var lineInterval: CGFloat = 32 {

@@ -101,6 +101,7 @@ private class CharacterWithPronunciationView: NSView {
 
 private let pronunciationAttributes: [NSAttributedString.Key: Any] = [
     .font: NSFont.systemFont(ofSize: 12),
+    .foregroundColor: NSColor.controlTextColor,
     .paragraphStyle: { () -> NSParagraphStyle in
         let style = NSMutableParagraphStyle()
         style.maximumLineHeight = kPronunciationHeight
@@ -112,6 +113,7 @@ private let pronunciationAttributes: [NSAttributedString.Key: Any] = [
 
 private let characterAttributes: [NSAttributedString.Key: Any] = [
     .font: NSFont(name: "Kaiti TC", size: 32) ?? NSFont.systemFont(ofSize: 32),
+    .foregroundColor: NSColor.controlTextColor,
     .paragraphStyle: { () -> NSParagraphStyle in
         let style = NSMutableParagraphStyle()
         style.maximumLineHeight = kCharacterHeight
