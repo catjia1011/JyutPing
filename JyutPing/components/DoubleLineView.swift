@@ -8,11 +8,20 @@
 
 import Cocoa
 
-private let kPinkLineColor = NSColor(red:0.54, green:0.22, blue:0.40, alpha:1.0).withAlphaComponent(0.5)
-
 class DoubleLineView: NSView {
 
     static let defaultWidth: CGFloat = 20
+
+    let lineColor: NSColor = {
+        let fallbackColor = NSColor(red:0.54, green:0.22, blue:0.40, alpha:1.0).withAlphaComponent(0.5)
+        if #available(OSX 10.13, *) {
+            let namedLineColor = NSColor(named: "DoubleLineColor")
+            assert(namedLineColor != nil)
+            return namedLineColor ?? fallbackColor
+        } else {
+            return fallbackColor
+        }
+    }()
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -43,7 +52,7 @@ class DoubleLineView: NSView {
         guard let ctx = NSGraphicsContext.current?.cgContext else { return }
 
         ctx.setLineWidth(1)
-        ctx.setStrokeColor(kPinkLineColor.cgColor)
+        ctx.setStrokeColor(lineColor.cgColor)
         for x: CGFloat in [15, 18] {
             ctx.addLines(between: [CGPoint(x: x, y: dirtyRect.minY), CGPoint(x: x, y: dirtyRect.maxY)])
         }
