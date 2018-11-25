@@ -453,7 +453,7 @@
                                                                     </textFieldCell>
                                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                     <prototypeCellViews>
-                                                                        <tableCellView identifier="HeaderCell" id="CgC-g5-fY6" customClass="HeaderCellView" customModule="JyutPing" customModuleProvider="target">
+                                                                        <tableCellView identifier="HeaderCell" id="CgC-g5-fY6" customClass="OutlineHeaderCellView" customModule="JyutPing" customModuleProvider="target">
                                                                             <rect key="frame" x="1" y="0.0" width="156" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
@@ -607,18 +607,27 @@
                                                 </constraints>
                                                 <color key="fillColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </box>
-                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="NhZ-SQ-VSG">
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="eiX-QO-GPf">
                                                 <rect key="frame" x="0.0" y="0.0" width="440" height="332"/>
+                                                <subviews>
+                                                    <progressIndicator wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="8WY-4r-tuu">
+                                                        <rect key="frame" x="204" y="150" width="32" height="32"/>
+                                                    </progressIndicator>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="8WY-4r-tuu" firstAttribute="centerY" secondItem="eiX-QO-GPf" secondAttribute="centerY" id="9si-40-u8c"/>
+                                                    <constraint firstItem="8WY-4r-tuu" firstAttribute="centerX" secondItem="eiX-QO-GPf" secondAttribute="centerX" id="viM-lI-7VC"/>
+                                                </constraints>
                                             </customView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="NhZ-SQ-VSG" secondAttribute="bottom" id="Cff-Wp-W3c"/>
+                                            <constraint firstItem="eiX-QO-GPf" firstAttribute="top" secondItem="yRg-eV-yuh" secondAttribute="bottom" id="Dd5-xV-MyI"/>
                                             <constraint firstItem="yRg-eV-yuh" firstAttribute="leading" secondItem="8Ob-Oh-G46" secondAttribute="leading" id="cND-pi-Grd"/>
-                                            <constraint firstItem="NhZ-SQ-VSG" firstAttribute="top" secondItem="yRg-eV-yuh" secondAttribute="bottom" id="jfW-mO-K9C"/>
+                                            <constraint firstItem="eiX-QO-GPf" firstAttribute="leading" secondItem="8Ob-Oh-G46" secondAttribute="leading" id="eTn-ue-Kny"/>
+                                            <constraint firstAttribute="trailing" secondItem="eiX-QO-GPf" secondAttribute="trailing" id="fuZ-3t-JfM"/>
+                                            <constraint firstAttribute="bottom" secondItem="eiX-QO-GPf" secondAttribute="bottom" id="ifo-LS-PrA"/>
                                             <constraint firstAttribute="trailing" secondItem="yRg-eV-yuh" secondAttribute="trailing" id="kLX-vU-zwT"/>
                                             <constraint firstItem="yRg-eV-yuh" firstAttribute="top" secondItem="8Ob-Oh-G46" secondAttribute="top" id="mQI-j5-waX"/>
-                                            <constraint firstAttribute="trailing" secondItem="NhZ-SQ-VSG" secondAttribute="trailing" id="x5T-mK-hta"/>
-                                            <constraint firstItem="NhZ-SQ-VSG" firstAttribute="leading" secondItem="8Ob-Oh-G46" secondAttribute="leading" id="yAo-Je-kDe"/>
                                         </constraints>
                                     </customView>
                                 </subviews>
@@ -636,11 +645,12 @@
                         </constraints>
                     </customView>
                     <connections>
+                        <outlet property="lookupIndicator" destination="8WY-4r-tuu" id="s7c-Ha-DSg"/>
+                        <outlet property="lookupResultWrapper" destination="eiX-QO-GPf" id="wkc-dC-LDh"/>
                         <outlet property="outlineView" destination="c6a-cy-Pje" id="MuD-CQ-Qpq"/>
                         <outlet property="settingMenu" destination="bL5-Dp-DzM" id="4RN-Zy-x0Z"/>
                         <outlet property="settingSegmentControl" destination="IWY-5h-d5z" id="1BB-uB-OUp"/>
                         <outlet property="speakButton" destination="Wr9-Bo-ZmN" id="ZJ7-dX-Mk5"/>
-                        <outlet property="webViewWrapper" destination="NhZ-SQ-VSG" id="RhP-5D-10J"/>
                     </connections>
                 </viewController>
                 <customObject id="Ddz-HP-8sY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

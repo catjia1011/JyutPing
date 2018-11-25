@@ -7,39 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E03031321A728B80025D36D /* LookupResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03031221A728B80025D36D /* LookupResultViewController.swift */; };
+		4E03031621A82BE90025D36D /* TrackingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03031421A82BE90025D36D /* TrackingCollectionView.swift */; };
+		4E03031D21A888E30025D36D /* PaperLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03031C21A888E30025D36D /* PaperLineView.swift */; };
+		4E03032221AA8D230025D36D /* DoubleLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03032121AA8D230025D36D /* DoubleLineView.swift */; };
+		4E03032421AA96470025D36D /* TrackingSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03032321AA96470025D36D /* TrackingSelectionView.swift */; };
 		4E39159021A456420082715A /* OutlineNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E39158F21A456420082715A /* OutlineNode.swift */; };
 		4E39159221A4570E0082715A /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E39159121A4570E0082715A /* constants.swift */; };
+		4E48E9A721A6C85700BADDD7 /* CharacterCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48E9A621A6C85700BADDD7 /* CharacterCollectionViewItem.swift */; };
 		4E5AAC8221A167C4006D278F /* JyutDict.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E5AAC8121A167C4006D278F /* JyutDict.json */; };
-		4E5AAC8521A1CAD0006D278F /* HeaderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5AAC8321A1CAD0006D278F /* HeaderCellView.swift */; };
+		4E5AAC8521A1CAD0006D278F /* OutlineHeaderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5AAC8321A1CAD0006D278F /* OutlineHeaderCellView.swift */; };
 		4E75E94C218F2ADF003DA2C2 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E75E94A218F2ADF003DA2C2 /* MainWindowController.swift */; };
 		4E9DB0D9218F292F003F9091 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DB0D7218F292F003F9091 /* MainViewController.swift */; };
 		4EE25953218F313E00317493 /* helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE25951218F313E00317493 /* helpers.swift */; };
-		4EE7927C218F641E0082D0D8 /* JyutPing.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4EE7927B218F641E0082D0D8 /* JyutPing.bundle */; };
 		4EF1D8BB218F182400CF2088 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1D8BA218F182400CF2088 /* AppDelegate.swift */; };
 		4EF1D8BF218F182600CF2088 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EF1D8BE218F182600CF2088 /* Assets.xcassets */; };
 		4EF1D8C2218F182600CF2088 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EF1D8C0218F182600CF2088 /* Main.storyboard */; };
 		4EF9C61A21A51459002B48F0 /* NoClippingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF9C61921A51459002B48F0 /* NoClippingView.swift */; };
-		4EFCBBC321A32C2D00EB3DA1 /* MainViewController+WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCBBC221A32C2D00EB3DA1 /* MainViewController+WebView.swift */; };
+		4EFCBBC321A32C2D00EB3DA1 /* MainViewController+LookupResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCBBC221A32C2D00EB3DA1 /* MainViewController+LookupResult.swift */; };
 		4EFCBBC521A3303400EB3DA1 /* MainViewController+OutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCBBC421A3303400EB3DA1 /* MainViewController+OutlineView.swift */; };
 		4EFCBBC721A3334800EB3DA1 /* MainViewController+Speech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCBBC621A3334800EB3DA1 /* MainViewController+Speech.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E03031221A728B80025D36D /* LookupResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupResultViewController.swift; sourceTree = "<group>"; };
+		4E03031421A82BE90025D36D /* TrackingCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingCollectionView.swift; sourceTree = "<group>"; };
+		4E03031C21A888E30025D36D /* PaperLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperLineView.swift; sourceTree = "<group>"; };
+		4E03032121AA8D230025D36D /* DoubleLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleLineView.swift; sourceTree = "<group>"; };
+		4E03032321AA96470025D36D /* TrackingSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingSelectionView.swift; sourceTree = "<group>"; };
 		4E39158F21A456420082715A /* OutlineNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineNode.swift; sourceTree = "<group>"; };
 		4E39159121A4570E0082715A /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
+		4E48E9A621A6C85700BADDD7 /* CharacterCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewItem.swift; sourceTree = "<group>"; };
 		4E5AAC8121A167C4006D278F /* JyutDict.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JyutDict.json; sourceTree = "<group>"; };
-		4E5AAC8321A1CAD0006D278F /* HeaderCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCellView.swift; sourceTree = "<group>"; };
+		4E5AAC8321A1CAD0006D278F /* OutlineHeaderCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineHeaderCellView.swift; sourceTree = "<group>"; };
 		4E75E94A218F2ADF003DA2C2 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		4E9DB0D7218F292F003F9091 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4EE25951218F313E00317493 /* helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helpers.swift; sourceTree = "<group>"; };
-		4EE7927B218F641E0082D0D8 /* JyutPing.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JyutPing.bundle; sourceTree = "<group>"; };
 		4EF1D8B7218F182400CF2088 /* JyutPing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JyutPing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EF1D8BA218F182400CF2088 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EF1D8BE218F182600CF2088 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4EF1D8C1218F182600CF2088 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4EF1D8C3218F182600CF2088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EF9C61921A51459002B48F0 /* NoClippingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoClippingView.swift; sourceTree = "<group>"; };
-		4EFCBBC221A32C2D00EB3DA1 /* MainViewController+WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+WebView.swift"; sourceTree = "<group>"; };
+		4EFCBBC221A32C2D00EB3DA1 /* MainViewController+LookupResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+LookupResult.swift"; sourceTree = "<group>"; };
 		4EFCBBC421A3303400EB3DA1 /* MainViewController+OutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+OutlineView.swift"; sourceTree = "<group>"; };
 		4EFCBBC621A3334800EB3DA1 /* MainViewController+Speech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+Speech.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -55,6 +65,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E03032021AA8C360025D36D /* components */ = {
+			isa = PBXGroup;
+			children = (
+				4E5AAC8321A1CAD0006D278F /* OutlineHeaderCellView.swift */,
+				4E03031421A82BE90025D36D /* TrackingCollectionView.swift */,
+				4E48E9A621A6C85700BADDD7 /* CharacterCollectionViewItem.swift */,
+				4E03032321AA96470025D36D /* TrackingSelectionView.swift */,
+				4E03031C21A888E30025D36D /* PaperLineView.swift */,
+				4E03032121AA8D230025D36D /* DoubleLineView.swift */,
+				4EF9C61921A51459002B48F0 /* NoClippingView.swift */,
+				4E39158F21A456420082715A /* OutlineNode.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
 		4EF1D8AE218F182400CF2088 = {
 			isa = PBXGroup;
 			children = (
@@ -77,18 +102,16 @@
 				4EF1D8BA218F182400CF2088 /* AppDelegate.swift */,
 				4E75E94A218F2ADF003DA2C2 /* MainWindowController.swift */,
 				4E9DB0D7218F292F003F9091 /* MainViewController.swift */,
-				4EFCBBC221A32C2D00EB3DA1 /* MainViewController+WebView.swift */,
+				4EFCBBC221A32C2D00EB3DA1 /* MainViewController+LookupResult.swift */,
 				4EFCBBC421A3303400EB3DA1 /* MainViewController+OutlineView.swift */,
 				4EFCBBC621A3334800EB3DA1 /* MainViewController+Speech.swift */,
-				4E5AAC8321A1CAD0006D278F /* HeaderCellView.swift */,
-				4EF9C61921A51459002B48F0 /* NoClippingView.swift */,
-				4E39158F21A456420082715A /* OutlineNode.swift */,
+				4E03031221A728B80025D36D /* LookupResultViewController.swift */,
+				4E03032021AA8C360025D36D /* components */,
 				4E39159121A4570E0082715A /* constants.swift */,
 				4EE25951218F313E00317493 /* helpers.swift */,
 				4EF1D8C0218F182600CF2088 /* Main.storyboard */,
 				4EF1D8BE218F182600CF2088 /* Assets.xcassets */,
 				4E5AAC8121A167C4006D278F /* JyutDict.json */,
-				4EE7927B218F641E0082D0D8 /* JyutPing.bundle */,
 				4EF1D8C3218F182600CF2088 /* Info.plist */,
 			);
 			path = JyutPing;
@@ -160,7 +183,6 @@
 			files = (
 				4EF1D8BF218F182600CF2088 /* Assets.xcassets in Resources */,
 				4E5AAC8221A167C4006D278F /* JyutDict.json in Resources */,
-				4EE7927C218F641E0082D0D8 /* JyutPing.bundle in Resources */,
 				4EF1D8C2218F182600CF2088 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,15 +194,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E03032421AA96470025D36D /* TrackingSelectionView.swift in Sources */,
 				4E9DB0D9218F292F003F9091 /* MainViewController.swift in Sources */,
+				4E03031621A82BE90025D36D /* TrackingCollectionView.swift in Sources */,
+				4E48E9A721A6C85700BADDD7 /* CharacterCollectionViewItem.swift in Sources */,
 				4E39159021A456420082715A /* OutlineNode.swift in Sources */,
 				4EFCBBC721A3334800EB3DA1 /* MainViewController+Speech.swift in Sources */,
 				4E39159221A4570E0082715A /* constants.swift in Sources */,
-				4E5AAC8521A1CAD0006D278F /* HeaderCellView.swift in Sources */,
+				4E03031321A728B80025D36D /* LookupResultViewController.swift in Sources */,
+				4E03031D21A888E30025D36D /* PaperLineView.swift in Sources */,
+				4E5AAC8521A1CAD0006D278F /* OutlineHeaderCellView.swift in Sources */,
 				4EFCBBC521A3303400EB3DA1 /* MainViewController+OutlineView.swift in Sources */,
-				4EFCBBC321A32C2D00EB3DA1 /* MainViewController+WebView.swift in Sources */,
+				4EFCBBC321A32C2D00EB3DA1 /* MainViewController+LookupResult.swift in Sources */,
 				4E75E94C218F2ADF003DA2C2 /* MainWindowController.swift in Sources */,
 				4EF1D8BB218F182400CF2088 /* AppDelegate.swift in Sources */,
+				4E03032221AA8D230025D36D /* DoubleLineView.swift in Sources */,
 				4EF9C61A21A51459002B48F0 /* NoClippingView.swift in Sources */,
 				4EE25953218F313E00317493 /* helpers.swift in Sources */,
 			);

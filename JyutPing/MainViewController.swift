@@ -10,11 +10,12 @@ import Cocoa
 import WebKit
 
 class MainViewController: NSViewController {
+    let lookupResultVC = LookupResultViewController()
 
     @IBOutlet weak var outlineView: NSOutlineView!
-    @IBOutlet weak var webViewWrapper: NSView!
-    let webView: WKWebView = NoMenuWebView()
-
+    @IBOutlet weak var lookupResultWrapper: NSView!
+    @IBOutlet weak var lookupIndicator: NSProgressIndicator!
+    
     @IBOutlet weak var speakButton: NSButton!
     
     @IBOutlet weak var settingSegmentControl: NSSegmentedControl!
@@ -26,11 +27,6 @@ class MainViewController: NSViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        // WKWebView cannot be added using IB when targeting 10.11 and before
-        webViewWrapper.addSubview(webView)
-        webView.frame = webViewWrapper.bounds
-        webView.autoresizingMask = [.width, .height]
-
         // dropmenu for settingSegmentControl
         settingSegmentControl.setMenu(settingMenu, forSegment: 0)
         if #available(OSX 10.13, *) {
@@ -41,8 +37,13 @@ class MainViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.addChild(lookupResultVC)
+        lookupResultWrapper.addSubview(lookupResultVC.view, positioned: .below, relativeTo: lookupIndicator)
+        lookupResultVC.view.frame = lookupResultWrapper.bounds
+        lookupResultVC.view.autoresizingMask = [.width, .height]
+
         self.initializeOutlineView()
-        self.initializeWebView()
+        self.initializeLookupResultVC()
 
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNotification(_:)), name: UserDefaults.didChangeNotification, object: nil)
     }
@@ -54,12 +55,12 @@ class MainViewController: NSViewController {
     private var currrentDisplayedText: String?
     func displayText(_ text: String) {
         self.currrentDisplayedText = text
-        self.setWebViewContent(textToLookup: text)
+        self.showLookupResult(of: text)
     }
 
     func reloadDisplayedText() {
         guard let text = self.currrentDisplayedText else { return }
-        self.setWebViewContent(textToLookup: text)
+        self.showLookupResult(of: text)
     }
     
     @IBAction func speakButtonAction(_ sender: NSButton) {

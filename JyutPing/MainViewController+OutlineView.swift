@@ -110,7 +110,7 @@ extension MainViewController: NSOutlineViewDataSource, NSOutlineViewDelegate {
 
         switch value {
         case .section(title: let title):
-            let cellView = outlineView.makeView(withIdentifier: .headerCell, owner: self) as? HeaderCellView
+            let cellView = outlineView.makeView(withIdentifier: .headerCell, owner: self) as? OutlineHeaderCellView
             cellView?.textField?.stringValue = title
             cellView?.delegate = self
             return cellView
@@ -151,8 +151,8 @@ extension MainViewController: NSOutlineViewDataSource, NSOutlineViewDelegate {
 }
 
 
-extension MainViewController: HeaderCellViewDelegate {
-    func headerCellView(_ cellView: HeaderCellView, didTapClearButton clearButton: NSButton) {
+extension MainViewController: OutlineHeaderCellViewDelegate {
+    func outlineHeaderCellView(_ cellView: OutlineHeaderCellView, didTapClearButton clearButton: NSButton) {
         self.historyNode.updateChildren { (children) in
             children.removeAll()
         }
