@@ -81,12 +81,6 @@ private class CharacterWithPronunciationView: NSView {
     }
 
     override func draw(_ dirtyRect: NSRect) {
-        guard let ctx = NSGraphicsContext.current?.cgContext else { return }
-
-        // clear background
-        ctx.setFillColor(NSColor.clear.cgColor)
-        ctx.fill(dirtyRect)
-
         let pronunciationFrame = NSRect(x: 0, y: self.bounds.height - kPronunciationHeight, width: self.bounds.width, height: kPronunciationHeight)
         let characterFrame = NSRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height - kPronunciationHeight - kSpacing)
 
