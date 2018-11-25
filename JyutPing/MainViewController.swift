@@ -45,6 +45,8 @@ class MainViewController: NSViewController {
         self.initializeOutlineView()
         self.initializeLookupResultVC()
 
+        self.displayText("你好")
+
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNotification(_:)), name: UserDefaults.didChangeNotification, object: nil)
     }
 
