@@ -609,6 +609,15 @@
                                             </box>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="eiX-QO-GPf">
                                                 <rect key="frame" x="0.0" y="0.0" width="440" height="332"/>
+                                                <subviews>
+                                                    <progressIndicator wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="8WY-4r-tuu">
+                                                        <rect key="frame" x="204" y="150" width="32" height="32"/>
+                                                    </progressIndicator>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="8WY-4r-tuu" firstAttribute="centerY" secondItem="eiX-QO-GPf" secondAttribute="centerY" id="9si-40-u8c"/>
+                                                    <constraint firstItem="8WY-4r-tuu" firstAttribute="centerX" secondItem="eiX-QO-GPf" secondAttribute="centerX" id="viM-lI-7VC"/>
+                                                </constraints>
                                             </customView>
                                         </subviews>
                                         <constraints>
@@ -636,6 +645,7 @@
                         </constraints>
                     </customView>
                     <connections>
+                        <outlet property="lookupIndicator" destination="8WY-4r-tuu" id="s7c-Ha-DSg"/>
                         <outlet property="lookupResultWrapper" destination="eiX-QO-GPf" id="wkc-dC-LDh"/>
                         <outlet property="outlineView" destination="c6a-cy-Pje" id="MuD-CQ-Qpq"/>
                         <outlet property="settingMenu" destination="bL5-Dp-DzM" id="4RN-Zy-x0Z"/>

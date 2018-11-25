@@ -44,27 +44,33 @@ extension MainViewController {
             text = text.applyingTransform(StringTransform(rawValue: "Hans-Hant"), reverse: false) ?? text
         }
 
-        let results: [SingleLookupResult] = text.map { (character) in
-            // the dict also contains numbers and letters
-            // if char is number or letter, skip searching the dict
-            if let unicodeScalar = character.unicodeScalars.first, type(of: self).avoidedCharacterSet.contains(unicodeScalar) {
-                return SingleLookupResult(character: character, pronunciation: "")
+        self.lookupIndicator.startAnimation(nil)
+        DispatchQueue.global(qos: .default).async {
+            let results: [SingleLookupResult] = text.map { (character) in
+                // the dict also contains numbers and letters
+                // if char is number or letter, skip searching the dict
+                if let unicodeScalar = character.unicodeScalars.first, type(of: self).avoidedCharacterSet.contains(unicodeScalar) {
+                    return SingleLookupResult(character: character, pronunciation: "")
+                }
+
+                let pronunciationDict = self.jyutDict[String(character)] as? JyutDictValue
+                let sorted = pronunciationDict?.sorted { $0.value > $1.value }.map { $0.key }
+
+                let pronunciation: String?
+                if self.displaysMostlyUsedPronunciationOnly {
+                    pronunciation = sorted?.first
+                } else {
+                    pronunciation = sorted?.joined(separator: ", ")
+                }
+
+                return SingleLookupResult(character: character, pronunciation: pronunciation ?? "")
             }
 
-            let pronunciationDict = jyutDict[String(character)] as? JyutDictValue
-            let sorted = pronunciationDict?.sorted { $0.value > $1.value }.map { $0.key }
-
-            let pronunciation: String?
-            if self.displaysMostlyUsedPronunciationOnly {
-                pronunciation = sorted?.first
-            } else {
-                pronunciation = sorted?.joined(separator: ", ")
+            DispatchQueue.main.async {
+                self.lookupResultVC.results = results
+                self.lookupIndicator.stopAnimation(nil)
             }
-            
-            return SingleLookupResult(character: character, pronunciation: pronunciation ?? "")
         }
-
-        self.lookupResultVC.results = results
     }
 }
 

@@ -14,7 +14,8 @@ class MainViewController: NSViewController {
 
     @IBOutlet weak var outlineView: NSOutlineView!
     @IBOutlet weak var lookupResultWrapper: NSView!
-
+    @IBOutlet weak var lookupIndicator: NSProgressIndicator!
+    
     @IBOutlet weak var speakButton: NSButton!
     
     @IBOutlet weak var settingSegmentControl: NSSegmentedControl!
@@ -37,7 +38,7 @@ class MainViewController: NSViewController {
         super.viewDidLoad()
 
         self.addChild(lookupResultVC)
-        lookupResultWrapper.addSubview(lookupResultVC.view)
+        lookupResultWrapper.addSubview(lookupResultVC.view, positioned: .below, relativeTo: nil)
         lookupResultVC.view.frame = lookupResultWrapper.bounds
         lookupResultVC.view.autoresizingMask = [.width, .height]
 
