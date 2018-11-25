@@ -1,5 +1,5 @@
 //
-//  HeaderCellView.swift
+//  OutlineHeaderCellView.swift
 //  JyutPing
 //
 //  Created by Cat Jia on 19/11/2018.
@@ -8,15 +8,15 @@
 
 import Cocoa
 
-protocol HeaderCellViewDelegate: NSObjectProtocol {
-    func headerCellView(_ cellView: HeaderCellView, didTapClearButton clearButton: NSButton) -> Void
+protocol OutlineHeaderCellViewDelegate: NSObjectProtocol {
+    func outlineHeaderCellView(_ cellView: OutlineHeaderCellView, didTapClearButton clearButton: NSButton) -> Void
 }
 
-class HeaderCellView: NSTableCellView {
+class OutlineHeaderCellView: NSTableCellView {
 
     @IBOutlet weak var clearButton: NSButton!
 
-    weak var delegate: HeaderCellViewDelegate?
+    weak var delegate: OutlineHeaderCellViewDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +25,7 @@ class HeaderCellView: NSTableCellView {
     }
 
     @IBAction func didTapClearButton(_ sender: NSButton) {
-        self.delegate?.headerCellView(self, didTapClearButton: sender)
+        self.delegate?.outlineHeaderCellView(self, didTapClearButton: sender)
     }
 
     private weak var trackingArea: NSTrackingArea?

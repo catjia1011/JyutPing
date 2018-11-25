@@ -453,7 +453,7 @@
                                                                     </textFieldCell>
                                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                     <prototypeCellViews>
-                                                                        <tableCellView identifier="HeaderCell" id="CgC-g5-fY6" customClass="HeaderCellView" customModule="JyutPing" customModuleProvider="target">
+                                                                        <tableCellView identifier="HeaderCell" id="CgC-g5-fY6" customClass="OutlineHeaderCellView" customModule="JyutPing" customModuleProvider="target">
                                                                             <rect key="frame" x="1" y="0.0" width="156" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>

@@ -14,7 +14,7 @@
 		4E39159221A4570E0082715A /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E39159121A4570E0082715A /* constants.swift */; };
 		4E48E9A721A6C85700BADDD7 /* CharacterCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48E9A621A6C85700BADDD7 /* CharacterCollectionViewItem.swift */; };
 		4E5AAC8221A167C4006D278F /* JyutDict.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E5AAC8121A167C4006D278F /* JyutDict.json */; };
-		4E5AAC8521A1CAD0006D278F /* HeaderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5AAC8321A1CAD0006D278F /* HeaderCellView.swift */; };
+		4E5AAC8521A1CAD0006D278F /* OutlineHeaderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5AAC8321A1CAD0006D278F /* OutlineHeaderCellView.swift */; };
 		4E75E94C218F2ADF003DA2C2 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E75E94A218F2ADF003DA2C2 /* MainWindowController.swift */; };
 		4E9DB0D9218F292F003F9091 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DB0D7218F292F003F9091 /* MainViewController.swift */; };
 		4EE25953218F313E00317493 /* helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE25951218F313E00317493 /* helpers.swift */; };
@@ -36,7 +36,7 @@
 		4E39159121A4570E0082715A /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		4E48E9A621A6C85700BADDD7 /* CharacterCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewItem.swift; sourceTree = "<group>"; };
 		4E5AAC8121A167C4006D278F /* JyutDict.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JyutDict.json; sourceTree = "<group>"; };
-		4E5AAC8321A1CAD0006D278F /* HeaderCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCellView.swift; sourceTree = "<group>"; };
+		4E5AAC8321A1CAD0006D278F /* OutlineHeaderCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineHeaderCellView.swift; sourceTree = "<group>"; };
 		4E75E94A218F2ADF003DA2C2 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		4E9DB0D7218F292F003F9091 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4EE25951218F313E00317493 /* helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helpers.swift; sourceTree = "<group>"; };
@@ -63,6 +63,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E03032021AA8C360025D36D /* components */ = {
+			isa = PBXGroup;
+			children = (
+				4E5AAC8321A1CAD0006D278F /* OutlineHeaderCellView.swift */,
+				4E03031421A82BE90025D36D /* TrackingCollectionView.swift */,
+				4E48E9A621A6C85700BADDD7 /* CharacterCollectionViewItem.swift */,
+				4E03031C21A888E30025D36D /* PaperLineView.swift */,
+				4EF9C61921A51459002B48F0 /* NoClippingView.swift */,
+				4E39158F21A456420082715A /* OutlineNode.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
 		4EF1D8AE218F182400CF2088 = {
 			isa = PBXGroup;
 			children = (
@@ -89,12 +102,7 @@
 				4EFCBBC421A3303400EB3DA1 /* MainViewController+OutlineView.swift */,
 				4EFCBBC621A3334800EB3DA1 /* MainViewController+Speech.swift */,
 				4E03031221A728B80025D36D /* LookupResultViewController.swift */,
-				4E03031C21A888E30025D36D /* PaperLineView.swift */,
-				4E48E9A621A6C85700BADDD7 /* CharacterCollectionViewItem.swift */,
-				4E03031421A82BE90025D36D /* TrackingCollectionView.swift */,
-				4E5AAC8321A1CAD0006D278F /* HeaderCellView.swift */,
-				4EF9C61921A51459002B48F0 /* NoClippingView.swift */,
-				4E39158F21A456420082715A /* OutlineNode.swift */,
+				4E03032021AA8C360025D36D /* components */,
 				4E39159121A4570E0082715A /* constants.swift */,
 				4EE25951218F313E00317493 /* helpers.swift */,
 				4EF1D8C0218F182600CF2088 /* Main.storyboard */,
@@ -192,7 +200,7 @@
 				4E39159221A4570E0082715A /* constants.swift in Sources */,
 				4E03031321A728B80025D36D /* LookupResultViewController.swift in Sources */,
 				4E03031D21A888E30025D36D /* PaperLineView.swift in Sources */,
-				4E5AAC8521A1CAD0006D278F /* HeaderCellView.swift in Sources */,
+				4E5AAC8521A1CAD0006D278F /* OutlineHeaderCellView.swift in Sources */,
 				4EFCBBC521A3303400EB3DA1 /* MainViewController+OutlineView.swift in Sources */,
 				4EFCBBC321A32C2D00EB3DA1 /* MainViewController+LookupResult.swift in Sources */,
 				4E75E94C218F2ADF003DA2C2 /* MainWindowController.swift in Sources */,
