@@ -58,7 +58,7 @@ extension MainViewController {
 
                 let pronunciation: String?
                 if self.displaysMostlyUsedPronunciationOnly {
-                    pronunciation = sorted?.first
+                    pronunciation = sorted?.first?.appending("..")
                 } else {
                     pronunciation = sorted?.joined(separator: ", ")
                 }
