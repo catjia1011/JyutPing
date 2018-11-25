@@ -100,7 +100,7 @@ private class CharacterWithPronunciationView: NSView {
 
 
 private let pronunciationAttributes: [NSAttributedString.Key: Any] = [
-    .font: NSFont.systemFont(ofSize: 12),
+    .font: NSFont.systemFont(ofSize: 12, weight: .light),
     .foregroundColor: NSColor.controlTextColor,
     .paragraphStyle: { () -> NSParagraphStyle in
         let style = NSMutableParagraphStyle()
