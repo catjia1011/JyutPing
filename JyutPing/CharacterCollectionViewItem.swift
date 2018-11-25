@@ -54,6 +54,21 @@ private class CharacterWithPronunciationView: NSView {
         return NSSize(width: width, height: (kPronunciationHeight + kSpacing + kCharacterHeight))
     }
 
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        self.setup()
+    }
+
+    required init?(coder decoder: NSCoder) {
+        super.init(coder: decoder)
+        self.setup()
+    }
+
+    func setup() {
+        self.wantsLayer = true
+        self.layerContentsRedrawPolicy = .duringViewResize
+    }
+
     var pronunciationAttrString: NSAttributedString? {
         didSet {
             self.setNeedsDisplay(self.bounds)
