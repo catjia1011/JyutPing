@@ -19,16 +19,23 @@ class PaperLineView: NSView {
         }
     }
 
-    override var isOpaque: Bool {
-        return false
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        self.setup()
+    }
+
+    required init?(coder decoder: NSCoder) {
+        super.init(coder: decoder)
+        self.setup()
+    }
+
+    func setup() {
+        self.wantsLayer = true
+        self.layerContentsRedrawPolicy = .beforeViewResize
     }
 
     override func draw(_ dirtyRect: NSRect) {
         guard let ctx = NSGraphicsContext.current?.cgContext else { return }
-
-        // clear background
-        ctx.setFillColor(NSColor.clear.cgColor)
-        ctx.fill(dirtyRect)
 
         guard lineInterval >= kMinimalLineInterval else { return }
 
