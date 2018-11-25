@@ -9,7 +9,7 @@
 import Foundation
 import AppKit
 
-private let kSelectionPadding = (horizontal: CGFloat(2), vertical: CGFloat(2))
+private let kSelectionPadding = (horizontal: CGFloat(4), vertical: CGFloat(2))
 
 struct SingleLookupResult {
     let character: Character
@@ -37,7 +37,7 @@ class LookupResultViewController: NSViewController {
     }
 
     override func loadView() {
-        flowLayout.minimumInteritemSpacing = 4
+        flowLayout.minimumInteritemSpacing = 8
         flowLayout.minimumLineSpacing = 8
         flowLayout.sectionInset = NSEdgeInsets(top: 13, left: 32, bottom: 32, right: 16)
         collectionView.collectionViewLayout = flowLayout
@@ -59,6 +59,7 @@ class LookupResultViewController: NSViewController {
         selectionView.isHidden = true
         self.view.addSubview(selectionView, positioned: .below, relativeTo: nil)
 
+        paperLineView.lineInterval = (CharacterCollectionViewItem.defaultHeight + flowLayout.minimumLineSpacing) / 2
         self.scrollView.contentView.addSubview(paperLineView, positioned: .below, relativeTo: nil)
 
         let selectionImage = NSImage(named: "CharacterSelection")

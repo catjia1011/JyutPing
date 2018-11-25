@@ -22,6 +22,8 @@ class CharacterCollectionViewItem: NSCollectionViewItem {
         return CharacterWithPronunciationView.defaultSize(forCharacter: characterAttrString, pronunciation: pronunciationAttrString)
     }
 
+    static let defaultHeight: CGFloat = CharacterWithPronunciationView.defaultHeight
+
     override func loadView() {
         self.view = CharacterWithPronunciationView()
     }
@@ -51,8 +53,10 @@ private class CharacterWithPronunciationView: NSView {
         let pronunciationSize = pronunciation.boundingRect(with: refSize, options: kDrawingOptions)
 
         let width = max(characterSize.width, pronunciationSize.width)
-        return NSSize(width: width, height: (kPronunciationHeight + kSpacing + kCharacterHeight))
+        return NSSize(width: width, height: defaultHeight)
     }
+
+    static let defaultHeight = kPronunciationHeight + kSpacing + kCharacterHeight
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
