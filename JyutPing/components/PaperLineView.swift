@@ -9,7 +9,6 @@
 import Cocoa
 
 private let kMinimalLineInterval = 10 as CGFloat
-private let kPinkLineColor = NSColor(red:0.54, green:0.22, blue:0.40, alpha:1.0).withAlphaComponent(0.5)
 private let kDashLineColor = NSColor.black.withAlphaComponent(0.24)
 
 class PaperLineView: NSView {
@@ -58,14 +57,6 @@ class PaperLineView: NSView {
                 ctx.addLines(between: [CGPoint(x: 0, y: y), CGPoint(x: self.bounds.width, y: y)])
             }
             y += lineInterval
-        }
-        ctx.strokePath()
-
-        // draw vertical lines
-        ctx.setStrokeColor(kPinkLineColor.cgColor)
-        ctx.setLineDash(phase: 0, lengths: [])
-        for x: CGFloat in [15, 18] {
-            ctx.addLines(between: [CGPoint(x: x, y: dirtyRect.minY), CGPoint(x: x, y: dirtyRect.maxY)])
         }
         ctx.strokePath()
     }

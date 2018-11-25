@@ -38,7 +38,7 @@ class MainViewController: NSViewController {
         super.viewDidLoad()
 
         self.addChild(lookupResultVC)
-        lookupResultWrapper.addSubview(lookupResultVC.view, positioned: .below, relativeTo: nil)
+        lookupResultWrapper.addSubview(lookupResultVC.view, positioned: .below, relativeTo: lookupIndicator)
         lookupResultVC.view.frame = lookupResultWrapper.bounds
         lookupResultVC.view.autoresizingMask = [.width, .height]
 

@@ -29,6 +29,7 @@ class LookupResultViewController: NSViewController {
     private let collectionView = TrackingCollectionView()
     private let selectionView = NSImageView()
     private let paperLineView = PaperLineView()
+    private let doubleLineView = DoubleLineView()
 
     var results: [SingleLookupResult] = [] {
         didSet {
@@ -49,18 +50,17 @@ class LookupResultViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // collection view
         collectionView.register(itemType: CharacterCollectionViewItem.self)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.trackingDelegate = self
         collectionView.isSelectable = false
 
+        // selection view
         selectionView.frame.size = .zero
         selectionView.isHidden = true
         self.view.addSubview(selectionView, positioned: .below, relativeTo: nil)
-
-        paperLineView.lineInterval = (CharacterCollectionViewItem.defaultHeight + flowLayout.minimumLineSpacing) / 2
-        self.scrollView.contentView.addSubview(paperLineView, positioned: .below, relativeTo: nil)
 
         let selectionImage = NSImage(named: "CharacterSelection")
         selectionImage?.resizingMode = .stretch
@@ -69,6 +69,12 @@ class LookupResultViewController: NSViewController {
         selectionView.image = selectionImage
         selectionView.imageScaling = .scaleAxesIndependently
 
+        // paper line & double line
+        paperLineView.lineInterval = (CharacterCollectionViewItem.defaultHeight + flowLayout.minimumLineSpacing) / 2
+        self.scrollView.contentView.addSubview(paperLineView, positioned: .below, relativeTo: nil)
+        self.scrollView.addSubview(doubleLineView, positioned: .below, relativeTo: nil)
+
+        // did scroll observing
         scrollView.contentView.postsBoundsChangedNotifications = true
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNotification(_:)), name: NSView.boundsDidChangeNotification, object: scrollView.contentView)
     }
@@ -80,6 +86,7 @@ class LookupResultViewController: NSViewController {
     override func viewDidLayout() {
         super.viewDidLayout()
         self.paperLineView.frame = self.collectionView.frame
+        self.doubleLineView.frame = NSRect(x: 0, y: 0, width: DoubleLineView.defaultWidth, height: self.scrollView.bounds.height)
     }
 
     @objc private func didReceiveNotification(_ notification: Notification) {
