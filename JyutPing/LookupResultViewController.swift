@@ -31,6 +31,8 @@ class LookupResultViewController: NSViewController {
     private let paperLineView = PaperLineView()
     private let doubleLineView = DoubleLineView()
 
+    private var viewFrameObservation: NSKeyValueObservation? // for OS X 10.11
+
     var results: [SingleLookupResult] = [] {
         didSet {
             self.collectionView.reloadData()
@@ -70,6 +72,13 @@ class LookupResultViewController: NSViewController {
         // did scroll observing
         scrollView.contentView.postsBoundsChangedNotifications = true
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNotification(_:)), name: NSView.boundsDidChangeNotification, object: scrollView.contentView)
+
+        // for OS X 10.11, `viewDidLayout` does not behave as expected
+        if NSAppKitVersion.current < .macOS10_12 {
+            viewFrameObservation = self.view.observe(\.frame) { [unowned self] (observer, change) in
+                self.updateLayoutOfSubviews()
+            }
+        }
     }
 
     deinit {
@@ -78,6 +87,10 @@ class LookupResultViewController: NSViewController {
 
     override func viewDidLayout() {
         super.viewDidLayout()
+        self.updateLayoutOfSubviews()
+    }
+
+    private func updateLayoutOfSubviews() {
         self.paperLineView.frame = self.collectionView.frame
         self.doubleLineView.frame = NSRect(x: 0, y: 0, width: DoubleLineView.defaultWidth, height: self.scrollView.bounds.height)
     }
