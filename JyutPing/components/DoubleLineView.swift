@@ -23,6 +23,8 @@ class DoubleLineView: NSView {
         }
     }()
 
+    var isUserInterfaceEnabled: Bool = true
+
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         self.setup()
@@ -57,6 +59,9 @@ class DoubleLineView: NSView {
             ctx.addLines(between: [CGPoint(x: x, y: dirtyRect.minY), CGPoint(x: x, y: dirtyRect.maxY)])
         }
         ctx.strokePath()
+    }
 
+    override func hitTest(_ point: NSPoint) -> NSView? {
+        return isUserInterfaceEnabled ? super.hitTest(point) : nil
     }
 }
