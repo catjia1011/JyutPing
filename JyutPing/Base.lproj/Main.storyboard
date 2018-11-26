@@ -347,64 +347,58 @@
                         <value key="minSize" type="size" width="600" height="400"/>
                         <toolbar key="toolbar" implicitIdentifier="5DB8B17A-AF0D-4BC9-B457-0ED05C00318A" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="IGP-es-bXY">
                             <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="57EB4A86-26F8-4624-A6C5-8B035A23209C" label="" paletteLabel="" tag="-1" sizingBehavior="auto" id="JK1-5v-uWm">
+                                <toolbarItem implicitItemIdentifier="57EB4A86-26F8-4624-A6C5-8B035A23209C" label="" paletteLabel="" tag="-1" id="JK1-5v-uWm">
                                     <nil key="toolTip"/>
+                                    <size key="minSize" width="0.0" height="22"/>
+                                    <size key="maxSize" width="9999" height="22"/>
                                     <customView key="view" id="Sc2-Rh-T1v" customClass="NoClippingView" customModule="JyutPing" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="14" width="489" height="40"/>
+                                        <rect key="frame" x="0.0" y="14" width="400" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <subviews>
-                                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lDz-xJ-15e">
-                                                <rect key="frame" x="0.0" y="0.0" width="491" height="40"/>
-                                                <subviews>
-                                                    <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKS-jt-Sal">
-                                                        <rect key="frame" x="0.0" y="9" width="425" height="22"/>
-                                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Enter Chinese text here" usesSingleLineMode="YES" bezelStyle="round" sendsWholeSearchString="YES" id="XkH-qV-fqu">
-                                                            <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </searchFieldCell>
-                                                        <connections>
-                                                            <action selector="searchFieldDidReturn:" target="B8D-0N-5wS" id="dRF-Eq-jub"/>
-                                                        </connections>
-                                                    </searchField>
-                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KX9-AI-eRg">
-                                                        <rect key="frame" x="432.5" y="8" width="59" height="23"/>
-                                                        <buttonCell key="cell" type="roundTextured" title="Lookup" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bkq-Qz-Ohl">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="didTapLookupButton:" target="B8D-0N-5wS" id="gIS-N3-Gve"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <visibilityPriorities>
-                                                    <integer value="1000"/>
-                                                    <integer value="1000"/>
-                                                </visibilityPriorities>
-                                                <customSpacing>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                </customSpacing>
-                                            </stackView>
+                                            <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QC3-Yy-kvK">
+                                                <rect key="frame" x="0.0" y="0.0" width="400" height="22"/>
+                                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Enter Chinese text here" usesSingleLineMode="YES" bezelStyle="round" sendsWholeSearchString="YES" id="dbz-cW-Vc6">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </searchFieldCell>
+                                                <connections>
+                                                    <action selector="searchFieldDidReturn:" target="B8D-0N-5wS" id="gSh-OH-MdQ"/>
+                                                </connections>
+                                            </searchField>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="lDz-xJ-15e" secondAttribute="trailing" id="byA-MX-9S5"/>
-                                            <constraint firstItem="lDz-xJ-15e" firstAttribute="top" secondItem="Sc2-Rh-T1v" secondAttribute="top" id="g7n-SR-AEg"/>
-                                            <constraint firstAttribute="bottom" secondItem="lDz-xJ-15e" secondAttribute="bottom" id="hR9-hp-r2V"/>
-                                            <constraint firstItem="lDz-xJ-15e" firstAttribute="leading" secondItem="Sc2-Rh-T1v" secondAttribute="leading" id="xjn-d2-yJU"/>
+                                            <constraint firstAttribute="bottom" secondItem="QC3-Yy-kvK" secondAttribute="bottom" id="TiZ-rG-jep"/>
+                                            <constraint firstAttribute="trailing" secondItem="QC3-Yy-kvK" secondAttribute="trailing" id="jSD-ky-QIT"/>
+                                            <constraint firstItem="QC3-Yy-kvK" firstAttribute="top" secondItem="Sc2-Rh-T1v" secondAttribute="top" id="v7Q-9g-FeG"/>
+                                            <constraint firstItem="QC3-Yy-kvK" firstAttribute="leading" secondItem="Sc2-Rh-T1v" secondAttribute="leading" id="vMh-rk-OZB"/>
                                         </constraints>
                                     </customView>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="19EF4DDF-2E3B-4474-AFE5-A8FBB80B165C" label="" paletteLabel="" sizingBehavior="auto" id="Gf3-fl-GJ3">
+                                    <nil key="toolTip"/>
+                                    <button key="view" verticalHuggingPriority="750" id="KX9-AI-eRg">
+                                        <rect key="frame" x="0.0" y="14" width="59" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" title="Lookup" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bkq-Qz-Ohl">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="didTapLookupButton:" target="B8D-0N-5wS" id="gIS-N3-Gve"/>
+                                        </connections>
+                                    </button>
                                 </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="JK1-5v-uWm"/>
+                                <toolbarItem reference="Gf3-fl-GJ3"/>
                             </defaultToolbarItems>
                         </toolbar>
                     </window>
                     <connections>
                         <outlet property="lookupButton" destination="KX9-AI-eRg" id="vMg-1d-huy"/>
-                        <outlet property="searchField" destination="hKS-jt-Sal" id="Caw-ho-xRp"/>
+                        <outlet property="searchField" destination="QC3-Yy-kvK" id="pL2-qb-GgI"/>
                         <segue destination="VuJ-KL-tx1" kind="relationship" relationship="window.shadowedContentViewController" id="6Tl-w3-slX"/>
                     </connections>
                 </windowController>
