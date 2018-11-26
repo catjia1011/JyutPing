@@ -52,7 +52,7 @@ private class CharacterWithPronunciationView: NSView {
         let characterSize = character.boundingRect(with: refSize, options: kDrawingOptions)
         let pronunciationSize = pronunciation.boundingRect(with: refSize, options: kDrawingOptions)
 
-        let width = max(characterSize.width, pronunciationSize.width)
+        let width = ceil(max(characterSize.width, pronunciationSize.width)) // `ceil` for make sure area width is enough in some old OS X systems
         return NSSize(width: width, height: defaultHeight)
     }
 
