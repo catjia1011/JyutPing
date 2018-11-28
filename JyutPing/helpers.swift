@@ -9,7 +9,7 @@
 import Cocoa
 
 extension NSObject {
-    func lazyAssociated<T>(_ key: UnsafeRawPointer, _ policy: objc_AssociationPolicy, generateBlock: () -> T) -> T {
+    func lazyAssociated<T: AnyObject>(_ key: UnsafeRawPointer, _ policy: objc_AssociationPolicy, generateBlock: () -> T) -> T {
         if let value = objc_getAssociatedObject(self, key) as? T {
             return value
         } else {
